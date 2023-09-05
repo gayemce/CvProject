@@ -105,12 +105,12 @@ body.scale-cv{
 
 .scale-cv .resume_left,
 .scale-cv .resume_right{
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 .scale-cv .home_img{
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
 }
 
 .scale-cv .home_container{
@@ -301,8 +301,8 @@ img{
 }
 
 .home_img{
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     justify-self: center;
     margin-bottom: var(--mb-1);
