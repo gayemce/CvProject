@@ -8,14 +8,10 @@ function removeScale(){
     document.body.classList.remove('scale-cv');
 } 
 
-
 /*=============== GENERATE PDF ===============*/ 
 // PDF generated 
 let areaCv = document.getElementById('area-cv')
-
 let resumeButton = document.getElementById('resume-button');
-
-
 
 // Html2pdf options
 let opt = {
