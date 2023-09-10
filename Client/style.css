@@ -58,6 +58,15 @@ body.scale-cv{
     --smaller-font-size: .688rem;
 }
 
+/*========== display flex ==========*/
+.d-flex{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 85vh;
+}
+
 /*========== save button ==========(düzenlenecek)*/
 .button-save{
     display: none;
@@ -109,8 +118,8 @@ body.scale-cv{
 }
 
 .scale-cv .home_img{
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
 }
 
 .scale-cv .home_container{
@@ -301,8 +310,8 @@ img{
 }
 
 .home_img{
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     justify-self: center;
     margin-bottom: var(--mb-1);
@@ -439,7 +448,7 @@ img{
 .languages_name{
     display: flex;
     align-items: center;
-    margin-bottom: var(--mb-3);
+    margin-bottom: var(--mb-2);
 }
 
 .skills_circle,
