@@ -567,3 +567,26 @@ img{
     }
 }
   
+/* --- edit form --- */
+.edit-form{
+    /* display: none; */
+    float: left;
+    width: 48%;
+    margin: 10px;
+}
+
+.main{
+    float: left;
+    width: 49%;
+    margin: 10px;
+}
+
+input{
+    font-size: 0.8rem;
+    font-family: var(--body-font);
+    padding: 2px 2px 2px 4px;
+}
+
+.input-profession{
+    width: 250px;
+}

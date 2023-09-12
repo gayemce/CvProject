@@ -46,31 +46,28 @@ function get(){
     document.getElementById("content").style.display = "none";
     document.getElementById("content-loading").style.display = "block";
     document.getElementById("error").style.display = "none";
-   setTimeout(() => {
     axios.get("http://localhost:5500/api/get")
-    .then(res => {
-        const myData = res.data;
-        setMyInformation(myData.person)
-        setMySkills(myData.skills)
-        setMySocialMedias(myData.socialMedias)
-        setMyEducations(myData.educations)
-        setMyWorkExperiences(myData.workExperiences)
-        setMyCertificates(myData.certificates)
-        setMyReferences(myData.references)
-        setMyLanguages(myData.languages)
-        setMyInterests(myData.interests)
+        .then(res => {
+            const myData = res.data;
+            setMyInformation(myData.person)
+            setMySkills(myData.skills)
+            setMySocialMedias(myData.socialMedias)
+            setMyEducations(myData.educations)
+            setMyWorkExperiences(myData.workExperiences)
+            setMyCertificates(myData.certificates)
+            setMyReferences(myData.references)
+            setMyLanguages(myData.languages)
+            setMyInterests(myData.interests)
 
-        document.getElementById("content").style.display = "block";
-        document.getElementById("content-loading").style.display = "none";
+            document.getElementById("content").style.display = "block";
+            document.getElementById("content-loading").style.display = "none";
 
-    })
-    .catch(err => {
-        console.log(err);
-        document.getElementById("content-loading").style.display = "none";
-        document.getElementById("error").style.display = "flex";
-    })
-
-   }, 1000);   
+        })
+        .catch(err => {
+            console.log(err);
+            document.getElementById("content-loading").style.display = "none";
+            document.getElementById("error").style.display = "flex";
+        })  
 }
 
 function tryagain(){
@@ -87,6 +84,14 @@ function setMyInformation(person){
    document.getElementById("phone").innerText = person.phone;
    document.getElementById("myProfile").innerHTML = person.myProfile;
    console.log(person); 
+
+   document.getElementById("input-name").value = person.name;
+   document.getElementById("input-surname").value = person.surname;
+   document.getElementById("input-profession").value = person.profession;
+}
+
+function keyupInputandSetValue(id, event){
+    document.getElementById(id).innerText = event.target.value;
 }
 
 function setMySocialMedias(socialMedias){
