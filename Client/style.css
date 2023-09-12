@@ -586,7 +586,3 @@ input{
     font-family: var(--body-font);
     padding: 2px 2px 2px 4px;
 }
-
-.input-profession{
-    width: 250px;
-}

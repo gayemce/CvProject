@@ -68,12 +68,12 @@ const workExperiences = [
     {
         title: "Eti Bakır A.Ş",
         yearSubtitle: "2022 | Intern Computer Engineer",
-        description: "I gained experience in hardware installations and IP/TCP. I personally performed hardware installations for the company, IP telephony usage and the necessary IP assignments. I also learned about activities such as network traffic monitoring and information acquisition."
+        description: "I gained experience in hardware installations and IP/TCP. I personally performed hardware installations for the company, IP telephony usage and the necessary IP assignments."
     },
     {
         title: "Betelgeuse Rocket Team | Teknofest",
         yearSubtitle: "2020 -2021 | Avionic Systems Software Team Captain",
-        description: "I was a founding member of the Betelgeuse Rocket team, which was established in September 2020 under the leadership of Kastamonu University Robotics Club, consisting of engineering students, and participated in the Teknofest Rocket competition. I performed operations such as receiving data and providing communication with Arduino and the necessary sensors temperature, Pressure gauge and communication sensor."
+        description: "I was a founding member of the Betelgeuse Rocket team, which was established in September 2020 under the leadership of Kastamonu University Robotics Club, consisting of engineering students, and participated in the Teknofest Rocket competition."
     }
 ]
 

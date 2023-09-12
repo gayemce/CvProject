@@ -43,6 +43,10 @@ function setMyInformation(person){
    document.getElementById("phone").innerText = person.phone;
    document.getElementById("myProfile").innerHTML = person.myProfile;
    console.log(person); 
+
+   document.getElementById("input-name").value = person.name;
+   document.getElementById("input-surname").value = person.surname;
+   document.getElementById("input-profession").value = person.profession;
 }
 
 function keyupInputandSetValue(id, event){
