@@ -68,7 +68,7 @@ body.scale-cv{
     height: 85vh;
 }
 
-/*========== buttons ==========*/
+/*========== save button ==========*/
 .button-save{
     display: none;
     position: absolute;
@@ -79,6 +79,7 @@ body.scale-cv{
     cursor: pointer;
 }
 
+/*========== cancel button ==========*/
 .button-cancel{
     display: none;
     position: absolute;
@@ -93,6 +94,20 @@ body.scale-cv{
     transform: rotate(135deg);
 }
 
+/*========== Edit button ==========*/
+.button-edit{
+    position: absolute;
+    right: 0;
+    top: 5.5rem;
+    display: flex;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.button-edit:hover{
+    color: var(--title-color);
+}
 
 /*========== Generate PDF button ==========*/
 .generate-pdf{
@@ -112,6 +127,10 @@ body.scale-cv{
 
 /*======== Classes modified to reduce size and print on A4 sheet ========*/
 .scale-cv .generate-pdf{
+    display: none;
+}
+
+.scale-cv .button-edit{
     display: none;
 }
 
@@ -550,6 +569,10 @@ img{
         padding: 0 2.5rem;
     }
 
+    .button-edit{
+        display: inline-block;
+    }
+
     .generate-pdf{
         display: inline-block;
     }
@@ -585,17 +608,17 @@ img{
 /* --- edit form --- */
 
 .edit-form{
-    /* display: none; */
+    display: none;
     float: left;
     width: calc(var(--width) - 3%);
     margin: 10px;
 }
 
-.main{
+/* .main{
     float: left;
     width: var(--width);
     margin: 10px;
-}
+} */
 
 input{
     font-size: 0.8rem;
