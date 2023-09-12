@@ -167,6 +167,269 @@
         </div>        
     </main>
 
+    <div class="edit-form">
+        <div class="l-main bd-container">
+            <div class="resume" id="area-cv">
+                <div class="resume_left">
+                    <!--========== HOME ==========-->
+                    <section class="home" id="home">
+                        <div class="home_container section bd-grid">
+                            <div class="home_data bd-grid">
+                                <img src="assets/img/#.jpg" alt="" class="home_img">
+                                <!-- <span>
+                                    <label for="input-image">İmage:</label><br>
+                                    <input type="file" id="input-image" style="width: 150px;"><br>
+                                </span> -->
+    
+                                <h1 class="home_title"></h1>
+                                    <span>
+                                        <label for="input-name">First name:</label><br>
+                                        <input onkeyup="keyupInputandSetValue('name',event)" type="text" id="input-name" style="width: 150px;"><br> 
+                                        <b> 
+                                            <label for="input-surname">Last name:</label><br>
+                                            <input onkeyup="keyupInputandSetValue('surname',event)" type="text" id="input-surname" style="width: 150px;"><br><br>
+                                        </b>
+                                    </span>
+                                <h3 class="home_profession">
+                                    <label for="input-profession">Your profession:</label><br>
+                                    <input onkeyup="keyupInputandSetValue('profession',event)" type="text" id="input-profession" style="width: 150px;"><br>
+                                </h3>
+    
+                                <!-- Button to download your CV saved in the pdf folder. Avaible for mobile -->
+                            </div>
+    
+                            <div class="home_address bd-grid">
+                                <span class="home_information">
+                                    <span>
+                                        <i class='bx bx-map home_icon'></i>
+                                        <label for="input-address">:</label>
+                                        <input onkeyup="keyupInputandSetValue('address',event)" type="text" id="input-address" style="width: 150px;"><br>
+                                    </span>
+                                </span>
+                                <span class="home_information">
+                                    <span>
+                                        <i class='bx bx-envelope home_icon'></i>
+                                        <label for="input-email">:</label>
+                                        <input onkeyup="keyupInputandSetValue('email',event)" type="email" id="input-email" style="width: 150px;"><br>
+                                    </span>
+                                </span>
+                                <span class="home_information">
+                                    <span>
+                                        <i class='bx bx-phone home_icon'></i>
+                                        <label for="input-phone">:</label>
+                                        <input onkeyup="keyupInputandSetValue('phone',event)" type="tel" id="input-phone" style="width: 150px;"><br>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </section> 
+
+                    <i class='bx bx-save button-save'></i>
+                    <i class='bx bx-plus bx-rotate-135 button-cancel'></i>
+                    
+                    <!--========== SOCIAL ==========-->
+                    <section class="social section">
+                        <h2 class="section-title">SOCIAL</h2>
+    
+                        <div class="social_container bd-grid">
+                            <span>
+                                <i class='bx bxl-linkedin-square social_icon'></i>
+                                <label for="linkedin">:</label>
+                                <input type="text" id="linkedin" name="linkedin" style="width: 150px;"><br>
+                            </span>
+                            <span>
+                                <i class='bx bxl-github social_icon'></i>
+                                <label for="github">:</label>
+                                <input type="text" id="github" name="github" style="width: 150px;"><br>
+                            </span>
+                            <span>
+                                <i class='bx bxl-medium social_icon'></i>
+                                <label for="medium">:</label>
+                                <input type="text" id="medium" name="medium" style="width: 150px;"><br>
+                            </span>
+                        </div>
+                    </section>
+    
+                    <!--========== PROFILE ==========-->
+                    <section class="profile section" id="profile">
+                        <h2 class="section-title">Profile</h2>
+    
+                        <p class="profile_description">
+                            <label for="input-profile">Your Profile:</label></p>
+                            <textarea onkeyup="keyupInputandSetValue('myProfile',event)" id="input-profile" rows="10" cols="25"></textarea>
+                            <br>
+                        </p>
+                    </section>
+                    
+                    <!--========== EDUCATION ==========-->
+                    <section class="education section" id="education">
+                        <h2 class="section-title">Education</h2>
+    
+                        <div class="education_container bd-grid">
+                            <div class="education_content">
+                                <div class="education_time">
+                                    <span class="education_rounder"></span>
+                                    <span class="education_line"></span>
+                                </div>
+    
+                                <div class="education_data bd-grid">
+                                    <h3 class="education_title"></h3>
+                                    <span>
+                                        <label for="depertmant">Depertmant:</label>
+                                        <input type="text" id="depertmant" name="depertmant" style="width: 150px;"><br>
+                                    </span>
+                                    <span class="education_studies">
+                                        <span>
+                                            <label for="univercity">Univercity:</label>
+                                            <input type="text" id="Univercity" name="Univercity" style="width: 150px;"><br>
+                                        </span>
+                                    </span>
+                                    <span class="education_year">
+                                        <span>
+                                            <label for="year">Education Year:</label>
+                                            <input type="number" id="year" name="year" style="width: 150px;"><br>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+    
+    
+                    <!--========== SKILLS  ==========-->
+                    <section class="skills section" id="skills">
+                        <h2 class="section-title">Skills</h2>
+    
+                        <div class="skills_content bd-grid">
+                            <ul class="skills_data">
+                                <li class="skills_name">
+                                    <span class="skills_circle"></span>
+                                    <span>
+                                        <label for="year">Skills:</label>
+                                        <input type="number" id="year" name="year" style="width: 150px;"><br>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+    
+                </div>
+    
+                <div class="resume_right">
+                    <!--========== EXPERIENCE ==========-->
+                    <section class="experience section" id="experience">
+                        <h2 class="section-title">Experience</h2>
+    
+                        <div class="experience_container bd-grid">
+                            <div class="experience_content">
+                                <div class="experience_time">
+                                    <span class="experience_rounder"></span>
+                                    <span class="experience_line"></span>
+                                </div>
+
+                                <div class="experience_data bd-grid">
+                                    <h3 class="experience_title"></h3>
+                                        <label for="experience">Experience:</label>
+                                        <input type="text" id="experience" name="experience" style="width: 250px;">
+                                    <div class="experience_company"></div>
+                                        <label for="year-departmant">Year and Depertmant:</label>
+                                        <input type="text" id="year-departmant" name="year-departmant" style="width: 250px;">
+                                    <p class="experience_description"></p>
+                                        <label for="description">Description:</label>
+                                        <textarea  id="description" name="description" rows="5" cols="35"></textarea>
+                                </div>  
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!--========== CERTIFICATES ==========-->
+                    <section class="certificate section" id="certificates">
+                        <h2 class="section-title">Certificates</h2>
+    
+                        <div class="certificate_container bd-grid">
+                            <div class="certificate_content">
+                                <h3 class="cerficate_title"></h3>
+                                    <label for="experience">Certificate:</label><br>
+                                    <input type="text" id="certificate" name="certificate" style="width: 250px;">
+                                <p class="certificate_description"></p>
+                                    <label for="certificate_description">Description:</label><br>
+                                    <textarea  id="certificate_description" name="certificate_description" rows="6" cols="40"></textarea>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!--========== REFERENCES ==========-->
+                    <section class="references section" id="references">
+                        <h2 class="section-title">References</h2>
+    
+                        <div class="references_container bd-grid">
+                            <div class="references_content bd-grid">
+                                <span class="references_subtitle"></span>
+                                    <span>
+                                        <label for="references_subtitle">Reference Subtitle:</label>
+                                        <input type="text" id="references_subtitle" name="references_subtitle"><br>
+                                    </span>
+                                <h3 class="references_title"></h3>
+                                    <span>
+                                        <label for="references_title">References Title:</label>
+                                        <input type="text" id="references_title" name="references_title"><br><br>
+                                    </span>
+                                <ul class="references_contact">
+                                    <li>
+                                        <span>
+                                            <label for="references_phone">Phone:</label>
+                                            <input type="tel" id="references_phone" name="references_phone"><br><br>
+                                        </span>  
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <label for="references_email">Email:</label>
+                                            <input type="email" id="references_email" name="references_email"><br>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!--========== LANGUAGES ==========-->
+                    <section class="languages section">
+                        <h2 class="section-title">Languages</h2>
+    
+                        <div class="languages_container">
+                            <ul class="languages_content bd-grid">
+                                <li class="languages_name">
+                                    <span class="languages_circle"></span>
+                                    <span>
+                                        <label for="languages">Languages:</label>
+                                        <input type="text" id="languages" name="languages"><br>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <!--========== INTERESTS ==========-->
+                    <section class="interests section">
+                        <h2 class="section-title">Interests</h2>
+    
+                        <div class="interests_container bd-grid">
+                            <div class="interests_content">
+                                <!-- <i class='bx bx-headphone interests_icon'></i> -->
+                                <span class="interests_name"></span>
+                                <span>
+                                    <label for="interests_name">Interests:</label>
+                                    <input type="text" id="interests_name" name="interests_name"><br>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>        
+        </div>
+    </div>
+
     <main id="content-loading" class="l-main bd-container" style="display: none;">
         <!-- All elements within this div, is generated in PDF -->
         <div class="resume" id="area-cv">
