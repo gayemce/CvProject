@@ -38,19 +38,23 @@
                         <div class="home_container section bd-grid">
                             <div class="home_data bd-grid">
                                 <img src="assets/img/#.jpg" alt="" class="home_img">
+                                <!-- <span>
+                                    <label for="input-image">İmage:</label><br>
+                                    <input type="file" id="input-image" style="width: 150px;"><br>
+                                </span> -->
     
                                 <h1 class="home_title"></h1>
                                     <span>
                                         <label for="input-name">First name:</label><br>
-                                        <input type="text" id="input-name" style="width: 150px;"><br> 
+                                        <input onkeyup="keyupInputandSetValue('name',event)" type="text" id="input-name" style="width: 150px;"><br> 
                                         <b> 
                                             <label for="input-surname">Last name:</label><br>
-                                            <input type="text" id="input-surname" style="width: 150px;"><br><br>
+                                            <input onkeyup="keyupInputandSetValue('surname',event)" type="text" id="input-surname" style="width: 150px;"><br><br>
                                         </b>
                                     </span>
                                 <h3 class="home_profession">
                                     <label for="input-profession">Your profession:</label><br>
-                                    <input type="text" id="input-profession" style="width: 150px;"><br>
+                                    <input onkeyup="keyupInputandSetValue('profession',event)" type="text" id="input-profession" style="width: 150px;"><br>
                                 </h3>
     
                                 <!-- Button to download your CV saved in the pdf folder. Avaible for mobile -->
@@ -60,22 +64,22 @@
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-map home_icon'></i>
-                                        <label for="edit-city">:</label>
-                                        <input type="text" id="edit-city" style="width: 150px;"><br>
+                                        <label for="input-address">:</label>
+                                        <input onkeyup="keyupInputandSetValue('address',event)" type="text" id="input-address" style="width: 150px;"><br>
                                     </span>
                                 </span>
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-envelope home_icon'></i>
-                                        <label for="edit-email">:</label>
-                                        <input type="email" id="edit-email" style="width: 150px;"><br>
+                                        <label for="input-email">:</label>
+                                        <input onkeyup="keyupInputandSetValue('email',event)" type="email" id="input-email" style="width: 150px;"><br>
                                     </span>
                                 </span>
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-phone home_icon'></i>
-                                        <label for="edit-phone">:</label>
-                                        <input type="tel" id="edit-phone" style="width: 150px;"><br>
+                                        <label for="input-phone">:</label>
+                                        <input onkeyup="keyupInputandSetValue('phone',event)" type="tel" id="input-phone" style="width: 150px;"><br>
                                     </span>
                                 </span>
                             </div>
@@ -119,8 +123,8 @@
                         <h2 class="section-title">Profile</h2>
     
                         <p class="profile_description">
-                            <label for="profile">Your Profile:</label></p>
-                            <textarea id="profile" name="profile" rows="4" cols="25"></textarea>
+                            <label for="input-profile">Your Profile:</label></p>
+                            <textarea onkeyup="keyupInputandSetValue('myProfile',event)" id="input-profile" rows="4" cols="25"></textarea>
                             <br>
                         </p>
                     </section>
@@ -668,7 +672,7 @@
     <!-- AXIOS cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
 
-    <!-- script js -->
+    <!-- main js -->
     <script src="main.js"></script>
 </body>
 </html>

@@ -47,6 +47,10 @@ function setMyInformation(person){
    document.getElementById("input-name").value = person.name;
    document.getElementById("input-surname").value = person.surname;
    document.getElementById("input-profession").value = person.profession;
+   document.getElementById("input-address").value = person.address;
+   document.getElementById("input-email").value = person.email;
+   document.getElementById("input-phone").value = person.phone;
+   document.getElementById("input-profile").value = person.myProfile;
 }
 
 function keyupInputandSetValue(id, event){
