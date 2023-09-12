@@ -99,6 +99,17 @@ function keyupInputandSetValue(id, event){
     document.getElementById(id).innerText = event.target.value;
 }
 
+function showEditForm(){
+    const content = document.getElementById("content");
+    content.classList.add("main");
+
+    const editForm = document.getElementById("edit-form");
+    editForm.style.display = "block";
+
+    document.getElementById("button-edit").style.display = "none";
+    document.getElementById("resume-button").style.display = "none";
+}
+
 function setMySocialMedias(socialMedias){
     let text = "";
     for(let socialMedia of socialMedias){

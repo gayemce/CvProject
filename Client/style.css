@@ -5,7 +5,7 @@
 :root {
     --header-height: 3rem;
     --width: 50%;
-    .
+    
     /*========== Colors ==========*/
     --title-color: #0B0A0A;
     --text-color: #403A3A;
@@ -97,8 +97,8 @@ body.scale-cv{
 /*========== Edit button ==========*/
 .button-edit{
     position: absolute;
-    right: 0;
-    top: 5.5rem;
+    right: 500px;
+    top: 4.5rem;
     display: flex;
     color: var(--text-color);
     font-size: 1.2rem;
@@ -113,8 +113,8 @@ body.scale-cv{
 .generate-pdf{
     display: none;
     position: absolute;
-    top: 5.5rem;
-    left: 15;
+    top: 4.5rem;
+    left: 1;
     font-size: 1.2rem;
     color: var(--text-color);
     cursor: pointer;
@@ -276,56 +276,12 @@ img{
 .l-header{
     width: 100%;
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     z-index: var(--z-fixed);
     background-color: var(--body-color);
     /* box-shadow: 0 -1px 4px rgba(0,0,0,.1); */
     margin-bottom: var(--mb-3);
-}
-
-/*========== NAV ==========*/
-.nav{
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-@media screen and (max-width: 968px){
-    .nav_menu{
-        position: fixed;
-        top: var(--header-height);
-        left: 0;
-        width: 100%;
-        padding: 0 1.5rem;
-        background-color: var(--body-color);
-        /* box-shadow: 0 1px 4px rgba(0,0,0,.1); */
-        /* border-radius: 1rem 1rem 0 0; */
-        z-index: var(--z-fixed);
-        /* transition: .3s */
-    }
-}
-
-.nav_logo{
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-}
-
-/* .nav_item{
-    text-align: center;
-} */
-
-.nav_link{
-    display: flex;
-    flex-direction: column;
-    font-size: var(--smaller-font-size);
-    color: var(--text-color-light);
-    font-weight: var(--font-medium);
-}
-
-.nav_link:hover{
-    color: var(--title-color);
 }
 
 /*========== HOME ==========*/
@@ -334,7 +290,6 @@ img{
 }
 
 .home_container{
-    margin-top: 3rem;
     gap: 3rem;
 }
 
@@ -370,10 +325,6 @@ img{
     font-size: var(--small-font-size);
 }
 
-.home_icon{
-    font-size: 1.2rem;
-    margin-right: .25rem;
-}
 
 /* .home_button-mobil{
     display: inline-block;
@@ -614,11 +565,11 @@ img{
     margin: 10px;
 }
 
-/* .main{
+.main{
     float: left;
     width: var(--width);
     margin: 10px;
-} */
+}
 
 input{
     font-size: 0.8rem;
