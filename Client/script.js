@@ -177,17 +177,55 @@ function setMyEducations(educations){
     
 }
 
-function setMySkills(skills){
+function createSkilElementForShowField(skills){
     let text = "";
-        for(let skill of skills){
-            text += `
-            <li class="skills_name">
-                <span class="skills_circle"></span> ${skill.title}
+    for(let skill of skills){
+        text += `
+        <li class="skills_name">
+            <span class="skills_circle"></span> ${skill.title}
+        </li>`
+    }
+
+console.log(skills);
+document.getElementById("mySkills").innerHTML = text;
+}
+
+function setMySkills(skills){  
+    createSkilElementForShowField(skills);
+
+    //index silinen kısma başka bir veri atarak indeksi yine doldurduğu için kaymaoluyor bu üzden id ile çalıştık.
+    let editText = "";
+    let id = 0;
+        for(let skill of skills){ 
+            id++;
+            editText += `
+            <li id="skillEditDiv${id}" data-id="${skill.id}" class="skills_name">
+                <span class="skills_circle"></span>
+                    <span>
+                        <label for="input-skillTitle"></label>
+                        <input type="text" id="input-skillTitle" value="${skill.title}"  style="width: 150px;"><br>
+                        <button onclick="removeSkillForEditForm('skillEditDiv${id}')">Delete</button>
+                    </span>
             </li>`
         }
+    
+    document.getElementById("ul-skills").innerHTML = editText;
+}
 
-        console.log(skills);
-        document.getElementById("mySkills").innerHTML = text;        
+function removeSkillForEditForm(elementId){
+    //debugger
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    //id'ye göre arıyarak indeksini bul.
+    const index = myData.skills.findIndex(p => p.id == id);
+    
+    //elementin kaydını siler
+    myData.skills.splice(index,1);
+
+    //edit formdan siler
+    element.remove();
+
+    createSkilElementForShowField(myData.skills);
 }
 
 function setMyWorkExperiences(workExperiences){

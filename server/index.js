@@ -19,16 +19,19 @@ let person = {
 
 let socialMedias = [
     {
+        id:0,
         name: "@gayemce",
         link: "https://www.linkedin.com/in/gayemce/",
         icon: "bx bxl-linkedin-square social_icon"
     },
     {
+        id:1,
         name: "@gayemce",
         link: "https://github.com/gayemce",
         icon: "bx bxl-github social_icon"
     },
     {
+        id:2,
         name: "@gayemce",
         link: "https://medium.com/@gayemce",
         icon: "bx bxl-medium social_icon"
@@ -37,11 +40,13 @@ let socialMedias = [
 
 let educations = [
     {
+        id:0,
         title: "COMPUTER ENGINEERING",
         studies: "Kastamonu University",
         year: "2018-2022"
     },
     {
+        id:1,
         title: "COMPUTER ENGINEERING",
         studies: "Kastamonu University",
         year: "2018-2022"
@@ -51,26 +56,32 @@ let educations = [
 
 let skills = [
     {
+        id: 0,
         title: "C#"
     },
     {
+        id:1,
         title: "CSS"
     },
     {
+        id:2,
         title: "HTML"
     },
     {
+        id:3,
         title: "Javascript"
     }
 ]
 
 let workExperiences = [ 
     {
+        id:0,
         title: "Eti Bakır A.Ş",
         yearSubtitle: "2022 | Intern Computer Engineer",
         description: "I gained experience in hardware installations and IP/TCP. I personally performed hardware installations for the company, IP telephony usage and the necessary IP assignments."
     },
     {
+        id:1,
         title: "Betelgeuse Rocket Team | Teknofest",
         yearSubtitle: "2020 -2021 | Avionic Systems Software Team Captain",
         description: "I was a founding member of the Betelgeuse Rocket team, which was established in September 2020 under the leadership of Kastamonu University Robotics Club, consisting of engineering students, and participated in the Teknofest Rocket competition."
