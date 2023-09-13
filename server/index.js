@@ -6,7 +6,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const person = {
+let person = {
     profileImg: "profileImg.jpg",
     name: "Gaye",
     surname: "TEKIN",
@@ -17,7 +17,7 @@ const person = {
     myProfile: `<p class="profile_description">I graduated from Kastamonu University in July 2022 as an honor student with an average of 3.02. I work in C#, T-SQL, Html, Css, JavaScript and Web API Technologies.</p>`
 }
 
-const socialMedias = [
+let socialMedias = [
     {
         name: "@gayemce",
         link: "https://www.linkedin.com/in/gayemce/",
@@ -35,7 +35,7 @@ const socialMedias = [
     }
 ]
 
-const educations = [
+let educations = [
     {
         title: "COMPUTER ENGINEERING",
         studies: "Kastamonu University",
@@ -49,7 +49,7 @@ const educations = [
     
 ]
 
-const skills = [
+let skills = [
     {
         title: "C#"
     },
@@ -64,7 +64,7 @@ const skills = [
     }
 ]
 
-const workExperiences = [ 
+let workExperiences = [ 
     {
         title: "Eti Bakır A.Ş",
         yearSubtitle: "2022 | Intern Computer Engineer",
@@ -77,7 +77,7 @@ const workExperiences = [
     }
 ]
 
-const certificates = [
+let certificates = [
     {
         title: "Programing 101: HTML",
         description: "101: HTML training program and was awarded this certificate."
@@ -88,7 +88,7 @@ const certificates = [
     }
 ]
 
-const references = [
+let references = [
     {
         subtitle: "Founder of Istanbul Egitim Akademi",
         title: "Caner Mollaoğlu",
@@ -103,7 +103,7 @@ const references = [
     }
 ]
 
-const languages = [
+let languages = [
     {
         name: "Turkish"
     },
@@ -112,7 +112,7 @@ const languages = [
     }
 ]
 
-const interests = [
+let interests = [
     {
         icon: "bx bx-headphone interests_icon",
         name: "Music"
@@ -149,6 +149,21 @@ app.get("/api/get", (req,res) => {
     }
     res.json(myInformation);
 });
+
+app.post("/api/set", (req,res) => {
+    const body = req.body;
+    person = body.person;
+    skills = body.skills;
+    socialMedias = body.socialMedias;
+    educations = body.educations;
+    workExperiences = body.workExperiences;
+    certificates = body.certificates;
+    references = body.references;
+    languages = body.languages;
+    interests = body.interests;
+
+    res.json({message: "Update is successful"})
+})
 
 
 app.listen(5500, () => console.log("The application runs over http://localhost:5500."));

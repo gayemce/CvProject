@@ -68,7 +68,7 @@
                     </section> 
     
                     <i class='bx bx-save button-save'></i>
-                    <i class='bx bx-plus bx-rotate-135 button-cancel'></i>
+                    <i onclick="hideEditForm()" class='bx bx-plus bx-rotate-135 button-cancel'></i>
                     
                     <!--========== SOCIAL ==========-->
                     <section class="social section">
@@ -306,11 +306,8 @@
                     </div>
                 </section> 
 
-                <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
-
                 <!-- Button to generate and download the pdf. Available for desktop. -->
                 <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
-                
                 
                 <!--========== SOCIAL ==========-->
                 <section class="social section">
@@ -372,6 +369,7 @@
                     </div>
                 </section>
 
+                <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
 
                 <!--========== CERTIFICATES ==========-->
                 <section class="certificate section" id="certificates">

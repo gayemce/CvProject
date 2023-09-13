@@ -43,13 +43,16 @@ resumeButton.addEventListener('click', () =>{
 /* --- Information from the API is received --- */
 get();
 
+//orijinal değerler saklanacak
+let myData = {}
+
 function get(){
     document.getElementById("content").style.display = "none";
     document.getElementById("content-loading").style.display = "block";
     document.getElementById("error").style.display = "none";
     axios.get("http://localhost:5500/api/get")
         .then(res => {
-            const myData = res.data;
+            myData = res.data;
             setMyInformation(myData.person)
             setMySkills(myData.skills)
             setMySocialMedias(myData.socialMedias)
@@ -86,17 +89,32 @@ function setMyInformation(person){
    document.getElementById("myProfile").innerHTML = person.myProfile;
    console.log(person); 
 
+
+   //değişkenlerde artık apiden değil kullanıcan alınan değerler var.
    document.getElementById("input-name").value = person.name;
+   person.name = document.getElementById("input-name").value;
+
    document.getElementById("input-surname").value = person.surname;
+   person.surname = document.getElementById("input-surname").value;
+
    document.getElementById("input-profession").value = person.profession;
+   person.profession = document.getElementById("input-profession").value;
+
    document.getElementById("input-address").value = person.address;
+   person.address = document.getElementById("input-address").value;
+
    document.getElementById("input-email").value = person.email;
+   person.email = document.getElementById("input-email").value;
+
    document.getElementById("input-phone").value = person.phone;
+   person.phone = document.getElementById("input-phone").value;
+
    document.getElementById("input-profile").value = person.myProfile;
+   person.myProfile = document.getElementById("input-profile").value;
 }
 
 function keyupInputandSetValue(id, event){
-    document.getElementById(id).innerText = event.target.value;
+    document.getElementById(id).innerHTML = event.target.value;
 }
 
 function showEditForm(){
@@ -108,6 +126,23 @@ function showEditForm(){
 
     document.getElementById("button-edit").style.display = "none";
     document.getElementById("resume-button").style.display = "none";
+}
+
+function hideEditForm(){
+    const result = confirm("Are you sure cancel this changing?")
+    if(!result) return;
+
+    const content = document.getElementById("content");
+    content.classList.remove("main");
+
+    const editForm = document.getElementById("edit-form");
+    editForm.style.display = "none";
+
+    document.getElementById("button-edit").style.display = "block";
+    document.getElementById("resume-button").style.display = "block";
+
+    //yapılan değişikle iptal edilsin
+    get();
 }
 
 function setMySocialMedias(socialMedias){

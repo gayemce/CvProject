@@ -70,21 +70,23 @@ body.scale-cv{
 
 /*========== save button ==========*/
 .button-save{
-    display: none;
     position: absolute;
-    top: 5.5rem;
-    left: 75px;
+    top: 5rem;
+    left: 815px;
     font-size: 1.2rem;
     color: var(--text-color);
     cursor: pointer;
 }
 
+.button-save:hover{
+    color: var(--title-color);
+}
+
 /*========== cancel button ==========*/
 .button-cancel{
-    display: none;
     position: absolute;
-    top: 5.3rem;
-    left: 100px;
+    top: 4.8rem;
+    left: 780px;
     font-size: 1.6rem;
     color: var(--text-color);
     cursor: pointer;
@@ -94,12 +96,17 @@ body.scale-cv{
     transform: rotate(135deg);
 }
 
+.button-cancel:hover{
+    color: var(--title-color);
+}
+
 /*========== Edit button ==========*/
 .button-edit{
+    display: none;
     position: absolute;
-    right: 500px;
-    top: 4.5rem;
-    display: flex;
+    right: 32rem;
+    top: 5rem;
+    /* display: flex; */
     color: var(--text-color);
     font-size: 1.2rem;
     cursor: pointer;
@@ -113,7 +120,7 @@ body.scale-cv{
 .generate-pdf{
     display: none;
     position: absolute;
-    top: 4.5rem;
+    top: 5rem;
     left: 1;
     font-size: 1.2rem;
     color: var(--text-color);
@@ -273,16 +280,16 @@ img{
     gap: 1.5rem;
 }
 
-.l-header{
+/* .l-header{
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: var(--z-fixed);
     background-color: var(--body-color);
-    /* box-shadow: 0 -1px 4px rgba(0,0,0,.1); */
+    box-shadow: 0 -1px 4px rgba(0,0,0,.1);
     margin-bottom: var(--mb-3);
-}
+} */
 
 /*========== HOME ==========*/
 .home{
@@ -326,22 +333,6 @@ img{
 }
 
 
-/* .home_button-mobil{
-    display: inline-block;
-    border: 2px solid var(--text-color);
-    color: var(--title-color);
-    padding: 1rem 2rem;
-    border-radius: .25rem;
-    transition: .3s;
-    font-weight: var(--font-medium);
-    margin-top: var(--mb-3);
-} */
-
-/* .home_button-mobil:hover{
-    background-color: var(--text-color);
-    color: var(--container-color);
-} */
-
 /*========== SOCIAL ==========*/
 .social_container{
     grid-template-columns: max-content;
@@ -363,6 +354,7 @@ img{
     font-size: 1.2rem;
     margin-right: .25rem;
 }
+
 /*========== PROFILE ==========*/
 .profile_description{
     text-align: center;
@@ -500,10 +492,6 @@ img{
         margin-right: auto;
     }
 
-    /* .l-header{
-        display: none;
-    } */
-
     .resume{
         display: grid;
         grid-template-columns: .5fr 1fr;
@@ -536,10 +524,6 @@ img{
     .home_container{
         gap: 1.5rem;
     }
-
-    /* .home_button-mobil{
-        display: none;
-    } */
 
     .references_container{
         grid-template-columns: repeat(2, 1fr);
