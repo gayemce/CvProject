@@ -1,7 +1,3 @@
-/*=============== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ===============*/
-// const { title } = require("process");
-
- 
 /* REDUCE THE SIZE AND PRINT ON AN A4 SHEET */ 
 function scaleCv(){
     document.body.classList.add('scale-cv');
@@ -55,7 +51,7 @@ function get(){
     document.getElementById("error").style.display = "none";
     axios.get("http://localhost:5500/api/get")
         .then(res => {
-            myData = res.data;
+            myData = res.data; //tüm veriler myData içinde saklı
             setMyInformation(myData.person)
             setMySkills(myData.skills)
             setMySocialMedias(myData.socialMedias)
@@ -101,9 +97,9 @@ function setMyInformation(person){
    document.getElementById("input-profile").value = person.myProfile;
 }
 
-function keyupInputandSetValue(id, event){
+function keyupInputandSetValue(id, event){ //person yerine objName eklene(cek)bilir
     document.getElementById(id).innerHTML = event.target.value;
-    myData.person[id] = event.target.value; //değişkenlerde artık apiden değil kullanıcan alınan değerler var.
+    myData.person[id] = event.target.value; //index.js person değişkenlerinde artık apiden değil kullanıcan alınan değerler var.
 }
 
 function showEditForm(){
@@ -134,14 +130,15 @@ function clear(){
     document.getElementById("button-edit").style.display = "block";
     document.getElementById("resume-button").style.display = "block";
 
-    //yapılan değişikle iptal edilsin
+    //api isteğini tekrar yapar
     get();
 }
 
+//myData, içindeki verileri sunucuya iletmek için kullanılır
 function save(){
     axios.post("http://localhost:5500/api/set",myData)
     .then(res => {
-        clear(); //api isteğini tekrar yaparak değiştirilmiş verileri getirir
+        clear(); 
     })
 }
 
