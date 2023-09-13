@@ -1,4 +1,7 @@
-/*=============== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ===============*/ 
+/*=============== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ===============*/
+// const { title } = require("process");
+
+ 
 /* REDUCE THE SIZE AND PRINT ON AN A4 SHEET */ 
 function scaleCv(){
     document.body.classList.add('scale-cv');
@@ -190,32 +193,56 @@ console.log(skills);
 document.getElementById("mySkills").innerHTML = text;
 }
 
+let skillEditId = 0;
+
 function setMySkills(skills){  
     createSkilElementForShowField(skills);
 
     //index silinen kısma başka bir veri atarak indeksi yine doldurduğu için kaymaoluyor bu üzden id ile çalıştık.
     let editText = "";
-    let id = 0;
         for(let skill of skills){ 
-            id++;
-            editText += `
-            <li id="skillEditDiv${id}" data-id="${skill.id}" class="skills_name">
-                <span class="skills_circle"></span>
-                    <span>
-                        <label for="input-skillTitle"></label>
-                        <input type="text" id="input-skillTitle" value="${skill.title}"  style="width: 150px;"><br>
-                        <button onclick="removeSkillForEditForm('skillEditDiv${id}')">Delete</button>
-                    </span>
-            </li>`
+            skillEditId++;
+            editText += getSkillEditFormLiField(skill);
         }
     
     document.getElementById("ul-skills").innerHTML = editText;
 }
 
+function getSkillEditFormLiField(skill){
+    return `
+    <li id="skillEditDiv${skillEditId}" data-id="${skill.id}" class="skills_name">
+        <span class="skills_circle"></span>
+            <span>
+                <label for="input-skillTitle"></label>
+                <input onkeyup="keyupGetAndSetSkillInputValue(event, 'title')" type="text" id="input-skillTitle${skillEditId}" data-id="${skill.id}" value="${skill.title}" style="width: 150px;"><br>
+                <button class="button-delete" onclick="removeSkillForEditForm('skillEditDiv${skillEditId}')">Delete</button>
+            </span>
+    </li>`
+}
+
+function createSkillEditFormLiField(){
+    skillEditId++;
+    const skill = {id:skillEditId, title:""}; //database de değişiklik yapılacak
+    myData.skills.push(skill);
+    document.getElementById("ul-skills").innerHTML += getSkillEditFormLiField(skill);
+
+    createSkilElementForShowField(myData.skills) //content sayfasına da ekler.
+}
+
+//yeni eklenen yetenekleride content sayfasına yansıtmak için
+function keyupGetAndSetSkillInputValue(event,name){
+    const element = event.target;
+    const id = element.dataset["id"];
+    const index = myData.skills.findIndex(p => p.id == id);
+
+    myData.skills[index][name] = element.value;
+    createSkilElementForShowField(myData.skills)
+}
+
 function removeSkillForEditForm(elementId){
     //debugger
     const element = document.getElementById(elementId);
-    const id = element.dataset["id"];
+    const id = element.dataset["id"]; //data-id den alndı.
     //id'ye göre arıyarak indeksini bul.
     const index = myData.skills.findIndex(p => p.id == id);
     
