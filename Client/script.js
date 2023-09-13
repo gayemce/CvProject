@@ -214,7 +214,7 @@ function getSkillEditFormLiField(skill){
         <span class="skills_circle"></span>
             <span>
                 <label for="input-skillTitle"></label>
-                <input onkeyup="keyupGetAndSetSkillInputValue(event, 'title')" type="text" id="input-skillTitle${skillEditId}" data-id="${skill.id}" value="${skill.title}" style="width: 150px;"><br>
+                <input onkeyup="keyupGetAndSetSkillInputValue(event, 'title', 'skills')" type="text" id="input-skillTitle${skillEditId}" data-id="${skill.id}" value="${skill.title}" style="width: 150px;"><br>
                 <button class="button-delete" onclick="removeSkillForEditForm('skillEditDiv${skillEditId}')">Delete</button>
             </span>
     </li>`
@@ -230,12 +230,13 @@ function createSkillEditFormLiField(){
 }
 
 //yeni eklenen yetenekleride content sayfasına yansıtmak için
-function keyupGetAndSetSkillInputValue(event,name){
+//tüm yapıda kullanılabilir
+function keyupGetAndSetSkillInputValue(event,name,objectName){
     const element = event.target;
     const id = element.dataset["id"];
     const index = myData.skills.findIndex(p => p.id == id);
 
-    myData.skills[index][name] = element.value;
+    myData[objectName][index][name] = element.value;
     createSkilElementForShowField(myData.skills)
 }
 
