@@ -89,32 +89,18 @@ function setMyInformation(person){
    document.getElementById("myProfile").innerHTML = person.myProfile;
    console.log(person); 
 
-
-   //değişkenlerde artık apiden değil kullanıcan alınan değerler var.
    document.getElementById("input-name").value = person.name;
-   person.name = document.getElementById("input-name").value;
-
    document.getElementById("input-surname").value = person.surname;
-   person.surname = document.getElementById("input-surname").value;
-
    document.getElementById("input-profession").value = person.profession;
-   person.profession = document.getElementById("input-profession").value;
-
    document.getElementById("input-address").value = person.address;
-   person.address = document.getElementById("input-address").value;
-
    document.getElementById("input-email").value = person.email;
-   person.email = document.getElementById("input-email").value;
-
    document.getElementById("input-phone").value = person.phone;
-   person.phone = document.getElementById("input-phone").value;
-
    document.getElementById("input-profile").value = person.myProfile;
-   person.myProfile = document.getElementById("input-profile").value;
 }
 
 function keyupInputandSetValue(id, event){
     document.getElementById(id).innerHTML = event.target.value;
+    myData.person[id] = event.target.value; //değişkenlerde artık apiden değil kullanıcan alınan değerler var.
 }
 
 function showEditForm(){
@@ -132,6 +118,10 @@ function hideEditForm(){
     const result = confirm("Are you sure cancel this changing?")
     if(!result) return;
 
+    clear()
+}
+
+function clear(){
     const content = document.getElementById("content");
     content.classList.remove("main");
 
@@ -143,6 +133,13 @@ function hideEditForm(){
 
     //yapılan değişikle iptal edilsin
     get();
+}
+
+function save(){
+    axios.post("http://localhost:5500/api/set",myData)
+    .then(res => {
+        clear(); //api isteğini tekrar yaparak değiştirilmiş verileri getirir
+    })
 }
 
 function setMySocialMedias(socialMedias){
