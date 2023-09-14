@@ -12,8 +12,8 @@
 </head>
 <body>
 
-    <div id="edit-form" class="edit-form" style="display: block;">
-        <div class="l-main bd-container">
+    <div id="edit-form" class="edit-form">
+        <div class="l-main edit-bd-container">
             <div class="resume">
                 <div class="resume_left">
                     <!--========== HOME ==========-->
@@ -93,7 +93,7 @@
                     <!--========== EDUCATION ==========-->
                     <section class="education section">
                         <h2 class="section-title">Education
-                            <i onclick="createEducationEditFormDivField()" class='bx bx-plus button-educationAdd'></i>
+                            <i onclick="createEducationEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>    
                         <div id="education-div" class="education_container bd-grid">
                             <div class="education_content">
@@ -112,7 +112,7 @@
                     <!--========== SKILLS  ==========-->
                     <section class="skills section">
                         <h2 class="section-title">Skills
-                            <i onclick="createSkillEditFormLiField()" class='bx bx-plus button-skillsAdd'></i>
+                            <i onclick="createSkillEditFormLiField()" class='bx bx-plus button-Add'></i>
                         </h2>
                         <div class="skills_content bd-grid">
                             <ul id="ul-skills" class="skills_data">
@@ -127,7 +127,7 @@
                     <!--========== EXPERIENCE ==========-->
                     <section class="experience section">
                         <h2 class="section-title">Experience
-                           <i onclick="createWorkExperienceEditFormDivField()" class='bx bx-plus button-experienceAdd'></i>
+                           <i onclick="createWorkExperienceEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
     
                         <div id="experience-div" class="experience_container bd-grid">
@@ -145,7 +145,7 @@
                     <br>
                     <section class="certificate section">
                         <h2 class="section-title">Certificates
-                            <i onclick="createCertificateEditFormDivField()" class='bx bx-plus button-certificatesAdd'></i>
+                            <i onclick="createCertificateEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
                         
                         <div id="certificate-div" class="certificate_container bd-grid">
@@ -156,7 +156,7 @@
                     <!--========== REFERENCES ==========-->
                     <section class="references section">
                         <h2 class="section-title">References
-                            <!-- <i onclick="createReferenceEditFormDivField()" class='bx bx-plus button-referencesAdd'></i> -->
+                            <!-- <i onclick="createReferenceEditFormDivField()" class='bx bx-plus button-Add'></i> -->
                         </h2>
     
                         <div id="reference-div" class="bd-grid">
@@ -167,7 +167,7 @@
                     <!--========== LANGUAGES ==========-->
                     <section class="languages section">
                         <h2 class="section-title">Languages
-                            <i onclick="createLanguageEditFormDivField()" class='bx bx-plus button-languagesAdd'></i>
+                            <i onclick="createLanguageEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
     
                         <div id="ul-languages" class="languages_container">
@@ -178,7 +178,7 @@
                     <!--========== INTERESTS ==========-->
                     <section class="interests section">
                         <h2 class="section-title">Interests
-                            <i onclick="createInterestEditFormDivField()" class='bx bx-plus button-languagesAdd'></i>
+                            <i onclick="createInterestEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
     
                         <div id="interest-div">
@@ -190,7 +190,7 @@
         </div>
     </div>
 
-    <main id="content" class="l-main bd-container main" style="display: none;">
+    <main id="content" class="l-main bd-container" style="display: none;">
         <!-- All elements within this div, is generated in PDF -->
         <div class="resume" id="area-cv">
             <div class="resume_left">
@@ -222,6 +222,8 @@
                         </div>
                     </div>
                 </section> 
+
+                <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
 
                 <!-- Button to generate and download the pdf. Available for desktop. -->
                 <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
@@ -285,7 +287,6 @@
                     </div>
                 </section>
 
-                <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
 
                 <!--========== CERTIFICATES ==========-->
                 <br>

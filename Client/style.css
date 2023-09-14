@@ -4,7 +4,6 @@
 /*===== VARIABLES CSS =====*/
 :root {
     --header-height: 3rem;
-    --width: 50%;
     
     /*========== Colors ==========*/
     --title-color: #0B0A0A;
@@ -32,11 +31,13 @@
     --mb-1: .5rem;
     --mb-2: 1rem;
     --mb-3: 1.5rem;
-    
   
     /*========== z index ==========*/
     --z-tooltip: 10;
     --z-fixed: 100;
+
+    /*========== width ==========*/
+    --width: 50%;
   }
 
 /*========== BASE ==========*/
@@ -44,10 +45,9 @@
     box-sizing: border-box;
 }
 
-html{
+/* html{
     scroll-behavior: smooth;
-}
-
+} */
 
 /*========== Font size variables to scale cv ==========*/
 body.scale-cv{
@@ -68,19 +68,11 @@ body.scale-cv{
     height: 85vh;
 }
 
-.button-educationAdd, .button-skillsAdd,
-.button-experienceAdd, .button-certificatesAdd,
-.button-languagesAdd{
+.button-Add{
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
 }
-
-/* .button-referencesAdd{
-    font-size: 1.2rem;
-    margin-top: 5px;
-    cursor: pointer;
-} */
 
 .button-delete{
     font-family: var(--body-font);
@@ -90,9 +82,9 @@ body.scale-cv{
 
 /*========== save button ==========*/
 .button-save{
-    position: absolute;
-    top: 5rem;
-    left: 625px;
+    position: relative;
+    left: 35rem;
+    bottom: 34.5rem;
     font-size: 1.2rem;
     color: var(--text-color);
     cursor: pointer;
@@ -104,9 +96,9 @@ body.scale-cv{
 
 /*========== cancel button ==========*/
 .button-cancel{
-    position: absolute;
-    top: 4.8rem;
-    left: 655px;
+    position: relative;
+    left: 35rem;
+    bottom: 34.3rem;
     font-size: 1.6rem;
     color: var(--text-color);
     cursor: pointer;
@@ -123,10 +115,9 @@ body.scale-cv{
 /*========== Edit button ==========*/
 .button-edit{
     display: none;
-    position: absolute;
-    right: 32rem;
-    top: 5rem;
-    /* display: flex; */
+    position: relative;
+    left: 54rem;
+    bottom: 26.5rem;
     color: var(--text-color);
     font-size: 1.2rem;
     cursor: pointer;
@@ -139,9 +130,9 @@ body.scale-cv{
 /*========== Generate PDF button ==========*/
 .generate-pdf{
     display: none;
-    position: absolute;
-    top: 5rem;
-    left: 1;
+    position: relative;
+    right: 1rem;
+    bottom: 26.5rem;
     font-size: 1.2rem;
     color: var(--text-color);
     cursor: pointer;
@@ -290,31 +281,21 @@ img{
 /*========== LAYOUT ==========*/
 .bd-container{
     max-width: 968px;
-    width: calc(100% - 3rem);
+    width: calc(100% - 2rem);
     margin-left: var(--mb-3);
     margin-right: var(--mb-3);
 }
 
 .bd-grid{
     display: grid;
-    gap: 1.5rem;
+    gap: .5rem;
 }
 
-/* .l-header{
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    background-color: var(--body-color);
-    box-shadow: 0 -1px 4px rgba(0,0,0,.1);
-    margin-bottom: var(--mb-3);
-} */
 
 /*========== HOME ==========*/
-.home{
+/* .home{
     position: relative;
-}
+} */
 
 .home_container{
     gap: 3rem;
@@ -503,6 +484,23 @@ img{
     margin-bottom: .25rem;
 }
 
+/* Bu stil, ekran genişliği 1368 pikselden küçük olduğunda çalışır */
+@media screen and (max-width: 1377px) {
+    .edit-form {
+        width: 100%; 
+        margin: 10px auto; 
+    }
+    
+    .main {
+        display: none !important;/* main formu gizle */
+    }
+
+    .edit-bd-container{
+        width: calc(100% - 25rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
 /*========== MEDIA QUERIES ==========*/
 /* Classes modified for large screen size */

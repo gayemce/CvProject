@@ -151,7 +151,7 @@ function keyupGetAndSetInputValue(event, name, objectName) {
     myData[objectName][index][name] = element.value;
 }
 
-//! --- ******************** SOCIAL MEDIAS ********************---*/
+//* --- ******************** SOCIAL MEDIAS ********************---*/
 function createSocialMediaElementForShowField(socialMedias){
     let text = "";
     for (let socialMedia of socialMedias) {
@@ -210,7 +210,7 @@ function removeSocialMediaForEditForm(elementId) {
     createSocialMediaElementForShowField(myData.socialMedias)
 }
 
-//! --- ******************** EDUCATIONS ********************---*/
+//* --- ******************** EDUCATIONS ********************---*/
 function createEducationElementForShowField(educations) {
     let text = "";
     for (let education of educations) {
@@ -295,7 +295,7 @@ function removeEducationForEditForm(elementId) {
     createEducationElementForShowField(myData.educations)
 }
 
-//! --- ******************** SKILLS ********************---*/
+//* --- ******************** SKILLS ********************---*/
 function createSkilElementForShowField(skills) {
     let text = "";
     for (let skill of skills) {
@@ -361,7 +361,7 @@ function removeSkillForEditForm(elementId) {
     createSkilElementForShowField(myData.skills);
 }
 
-//! --- ******************** WORK EXPERIENCES ********************---*/
+//* --- ******************** WORK EXPERIENCES ********************---*/
 
 function createWorkExperienceElementForShowField(workExperiences) {
     let text = "";
@@ -438,7 +438,7 @@ function removeWorkExperienceForEditForm(elementId) {
     createWorkExperienceElementForShowField(myData.workExperiences)
 }
 
-//! --- ******************** CERTIFICATES ******************** ---*/
+//* --- ******************** CERTIFICATES ******************** ---*/
 
 function createCertificatesElementForShowField(certificates) {
     let text = "";
@@ -501,7 +501,7 @@ function removeCertificateForEditForm(elementId) {
     createCertificatesElementForShowField(myData.certificates)
 }
 
-//! --- ******************** REFERENCES ********************---*/
+//* --- ******************** REFERENCES ********************---*/
 function createReferencesElementForShowField(references) {
     let text = "";
     for (let reference of references) {
@@ -567,7 +567,7 @@ function removeReferencesForEditForm(elementId) {
     createReferencesElementForShowField(myData.references)
 }
 
-//! --- ******************** LANGUAGES ********************---*/
+//* --- ******************** LANGUAGES ********************---*/
 
 function createLanguageElementForShowField(languages){
     let text = "";
@@ -629,7 +629,7 @@ function removeLanguageForEditForm(elementId) {
     createLanguageElementForShowField(myData.languages)
 }
 
-//! --- ******************** INTERESTS ********************---*/
+//* --- ******************** INTERESTS ********************---*/
 
 function createInterestElementForShowField(interests){
     let text = "";
