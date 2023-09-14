@@ -145,6 +145,25 @@ function save() {
 //* --- ******************** SOCIAL MEDIAS ********************---*/
 
 function setMySocialMedias(socialMedias) {
+    createSocialMediaElementForShowField(socialMedias)
+
+    let id = 0;
+    let editText = "";
+        for(let socialMedia of socialMedias){
+            id++;
+            editText += `
+            <span id="socialMediaEditDiv${id}" data-id=${socialMedia.id}>
+                <i class='${socialMedia.icon}'></i>
+                <label for="input-linkedin">:</label>
+                <input type="text" id="input-linkedin" value="${socialMedia.name}" style="width: 150px;"><br>
+            </span>
+            <button class="button-delete" onclick="removeSocialMediaForEditForm('socialMediaEditDiv${id}')">Delete</button>` 
+        }
+    
+    document.getElementById("socialmedia-div").innerHTML = editText;
+}
+
+function createSocialMediaElementForShowField(socialMedias){
     let text = "";
     for (let socialMedia of socialMedias) {
         text += `
@@ -155,6 +174,17 @@ function setMySocialMedias(socialMedias) {
 
     console.log(socialMedias);
     document.getElementById("mySocialMedias").innerHTML = text;
+}
+
+function removeSocialMediaForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.socialMedias.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.socialMedias.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createSocialMediaElementForShowField(myData.socialMedias)
 }
 
 //! --- ******************** EDUCATIONS ********************---*/
@@ -478,7 +508,7 @@ function removeReferencesForEditForm(elementId) {
     createReferencesElementForShowField(myData.references)
 }
 
-//* --- ******************** LANGUAGES ********************---*/
+//! --- ******************** LANGUAGES ********************---*/
 
 function setMyLanguages(languages) {
     createLanguageElementForShowField(languages)
@@ -526,7 +556,7 @@ function removeLanguageForEditForm(elementId) {
     createLanguageElementForShowField(myData.languages)
 }
 
-//* --- ******************** INTERESTS ********************---*/
+//! --- ******************** INTERESTS ********************---*/
 
 function setMyInterests(interests) {
     createInterestElementForShowField(interests)
@@ -537,7 +567,6 @@ function setMyInterests(interests) {
             id++;
             editText += `
             <div id="interestEditDiv${id}" data-id=${interest.id} class="edit-interests_content">
-                <span class="interests_name"></span>
                 <span>
                     <label for="input-interests_name"></label>
                     <input type="text" id="input-interests_name" value="${interest.name}"><br>
