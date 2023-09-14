@@ -47,8 +47,8 @@ let educations = [
     },
     {
         id:1,
-        title: "COMPUTER ENGINEERING",
-        studies: "Kastamonu University",
+        title: "MACHİNE ENGINEERING",
+        studies: "Gazi University",
         year: "2018-2022"
     }
     
@@ -90,10 +90,12 @@ let workExperiences = [
 
 let certificates = [
     {
+        id:0,
         title: "Programing 101: HTML",
         description: "101: HTML training program and was awarded this certificate."
     },
     {
+        id:1,
         title: "Programing 201: HTML5 & CSS",
         description: "201: HTML5 & CSS training program on January 22, 2023 and I was awarded this certificate."
     }
@@ -101,12 +103,14 @@ let certificates = [
 
 let references = [
     {
+        id:0,
         subtitle: "Founder of Istanbul Egitim Akademi",
         title: "Caner Mollaoğlu",
         phone: "0541 541 5411",
         email: "user@gmail.com"
     },
     {
+        id:1,
         subtitle: "Software Trainer",
         title: "Taner Saydam",
         phone: "0541 541 5411",
@@ -116,9 +120,11 @@ let references = [
 
 let languages = [
     {
+        id:0,
         name: "Turkish"
     },
     {
+        id:1,
         name: "English"
     }
 ]

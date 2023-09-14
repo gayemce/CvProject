@@ -1,34 +1,34 @@
-/* REDUCE THE SIZE AND PRINT ON AN A4 SHEET */ 
-function scaleCv(){
+/* REDUCE THE SIZE AND PRINT ON AN A4 SHEET */
+function scaleCv() {
     document.body.classList.add('scale-cv');
 }
 
 /*REMOVE THE SIZE WHEN THE CV IS DOWNLOADED */
-function removeScale(){
+function removeScale() {
     document.body.classList.remove('scale-cv');
-} 
+}
 
-/* GENERATE PDF */ 
+/* GENERATE PDF */
 // PDF generated 
 let areaCv = document.getElementById('area-cv')
 let resumeButton = document.getElementById('resume-button');
 
 // Html2pdf options
 let opt = {
-    margin:       0,
-    filename:     'myResume.pdf',
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 4 },
-    jsPDF:        { format: 'a4', orientation: 'portrait' }
-  };
+    margin: 0,
+    filename: 'myResume.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 4 },
+    jsPDF: { format: 'a4', orientation: 'portrait' }
+};
 
 // Function to call areaCv and Html2Pdf options 
-function generateResume(){
+function generateResume() {
     html2pdf(areaCv, opt);
 }
 
 // When the button is clicked, it executes the three functions
-resumeButton.addEventListener('click', () =>{
+resumeButton.addEventListener('click', () => {
     // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
     scaleCv();
 
@@ -45,7 +45,7 @@ get();
 //orijinal değerler saklanacak
 let myData = {}
 
-function get(){
+function get() {
     document.getElementById("content").style.display = "none";
     document.getElementById("content-loading").style.display = "block";
     document.getElementById("error").style.display = "none";
@@ -70,39 +70,39 @@ function get(){
             console.log(err);
             document.getElementById("content-loading").style.display = "none";
             document.getElementById("error").style.display = "flex";
-        })  
+        })
 }
 
-function tryagain(){
+function tryagain() {
     document.location.reload();
 }
 
-function setMyInformation(person){
-   document.getElementById("profileImg").src = person.profileImg;
-   document.getElementById("name").innerText = person.name;
-   document.getElementById("surname").innerText = person.surname;
-   document.getElementById("profession").innerText = person.profession;
-   document.getElementById("address").innerText = person.address;
-   document.getElementById("email").innerText = person.email;
-   document.getElementById("phone").innerText = person.phone;
-   document.getElementById("myProfile").innerHTML = person.myProfile;
-   console.log(person); 
+function setMyInformation(person) {
+    document.getElementById("profileImg").src = person.profileImg;
+    document.getElementById("name").innerText = person.name;
+    document.getElementById("surname").innerText = person.surname;
+    document.getElementById("profession").innerText = person.profession;
+    document.getElementById("address").innerText = person.address;
+    document.getElementById("email").innerText = person.email;
+    document.getElementById("phone").innerText = person.phone;
+    document.getElementById("myProfile").innerHTML = person.myProfile;
+    console.log(person);
 
-   document.getElementById("input-name").value = person.name;
-   document.getElementById("input-surname").value = person.surname;
-   document.getElementById("input-profession").value = person.profession;
-   document.getElementById("input-address").value = person.address;
-   document.getElementById("input-email").value = person.email;
-   document.getElementById("input-phone").value = person.phone;
-   document.getElementById("input-profile").value = person.myProfile;
+    document.getElementById("input-name").value = person.name;
+    document.getElementById("input-surname").value = person.surname;
+    document.getElementById("input-profession").value = person.profession;
+    document.getElementById("input-address").value = person.address;
+    document.getElementById("input-email").value = person.email;
+    document.getElementById("input-phone").value = person.phone;
+    document.getElementById("input-profile").value = person.myProfile;
 }
 
-function keyupInputandSetValue(id, event){ //person yerine objName eklene(cek)bilir
+function keyupInputandSetValue(id, event) { //person yerine objName eklene(cek)bilir
     document.getElementById(id).innerHTML = event.target.value;
     myData.person[id] = event.target.value; //index.js person değişkenlerinde artık apiden değil kullanıcan alınan değerler var.
 }
 
-function showEditForm(){
+function showEditForm() {
     const content = document.getElementById("content");
     content.classList.add("main");
 
@@ -113,14 +113,14 @@ function showEditForm(){
     document.getElementById("resume-button").style.display = "none";
 }
 
-function hideEditForm(){
+function hideEditForm() {
     const result = confirm("Are you sure cancel this changing?")
-    if(!result) return;
+    if (!result) return;
 
     clear()
 }
 
-function clear(){
+function clear() {
     const content = document.getElementById("content");
     content.classList.remove("main");
 
@@ -135,16 +135,18 @@ function clear(){
 }
 
 //myData, içindeki verileri sunucuya iletmek için kullanılır
-function save(){
-    axios.post("http://localhost:5500/api/set",myData)
-    .then(res => {
-        clear(); 
-    })
+function save() {
+    axios.post("http://localhost:5500/api/set", myData)
+        .then(res => {
+            clear();
+        })
 }
 
-function setMySocialMedias(socialMedias){
+//* --- ******************** SOCIAL MEDIAS ********************---*/
+
+function setMySocialMedias(socialMedias) {
     let text = "";
-    for(let socialMedia of socialMedias){
+    for (let socialMedia of socialMedias) {
         text += `
         <a href="${socialMedia.link}" target="_blank" class="social_link">
             <i class='${socialMedia.icon}'></i> ${socialMedia.name}
@@ -155,9 +157,48 @@ function setMySocialMedias(socialMedias){
     document.getElementById("mySocialMedias").innerHTML = text;
 }
 
-function setMyEducations(educations){
+//! --- ******************** EDUCATIONS ********************---*/
+
+function setMyEducations(educations) {
+    createEducationElementForShowField(educations);
+
+    //normal formda kaç veri varsa o kadar input gelsin
+    let editText = "";
+    let id = 0;
+    for (let education of educations) {
+        id++;
+        editText += `
+            <div id="educationEditDiv${id}" data-id=${education.id} class="education_content">
+                <div class="education_time">
+                    <span class="education_rounder"></span>
+                    <span class="education_line"></span>
+                </div>
+
+                <div class="education_data bd-grid">
+                    <span>
+                        <label for="input-depertmant">Depertmant:</label>
+                        <input type="text" id="input-depertmant" value="${education.title}" style="width: 175px;"><br>
+                    </span>
+                    <span>
+                        <label for="input-univercity">Univercity:</label>
+                        <input type="text" id="input-Univercity" value="${education.studies}" style="width: 175px;"><br>
+                    </span>
+                    <span>
+                        <label for="input-year">Education Year:</label>
+                        <input type="text" id="input-year" value="${education.year}" style="width: 175px;"><br>
+                    </span>
+                    <button class="button-delete" onclick="removeEducationForEditForm('educationEditDiv${id}')">Delete</button>
+                </div>
+            </div>`
+
+        document.getElementById("education-div").innerHTML = editText;
+    }
+
+}
+
+function createEducationElementForShowField(educations) {
     let text = "";
-    for(let education of educations){
+    for (let education of educations) {
         text += `
         <div class="education_content">
             <div class="education_time">
@@ -174,38 +215,51 @@ function setMyEducations(educations){
 
     console.log(educations);
     document.getElementById("myEducation").innerHTML = text;
-    
 }
 
-function createSkilElementForShowField(skills){
+//elementi ve myDatada ki kaydı siler. 
+function removeEducationForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.educations.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.educations.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createEducationElementForShowField(myData.educations)
+}
+
+//! --- ******************** SKILLS ********************---*/
+
+function createSkilElementForShowField(skills) {
     let text = "";
-    for(let skill of skills){
+    for (let skill of skills) {
         text += `
         <li class="skills_name">
             <span class="skills_circle"></span> ${skill.title}
         </li>`
     }
 
-console.log(skills);
-document.getElementById("mySkills").innerHTML = text;
+    console.log(skills);
+    document.getElementById("mySkills").innerHTML = text;
 }
 
 let skillEditId = 0;
 
-function setMySkills(skills){  
+function setMySkills(skills) {
     createSkilElementForShowField(skills);
 
     //index silinen kısma başka bir veri atarak indeksi yine doldurduğu için kaymaoluyor bu üzden id ile çalıştık.
     let editText = "";
-        for(let skill of skills){ 
-            skillEditId++;
-            editText += getSkillEditFormLiField(skill);
-        }
-    
+    for (let skill of skills) {
+        skillEditId++;
+        editText += getSkillEditFormLiField(skill);
+    }
+
     document.getElementById("ul-skills").innerHTML = editText;
 }
 
-function getSkillEditFormLiField(skill){
+function getSkillEditFormLiField(skill) {
     return `
     <li id="skillEditDiv${skillEditId}" data-id="${skill.id}" class="skills_name">
         <span class="skills_circle"></span>
@@ -217,18 +271,17 @@ function getSkillEditFormLiField(skill){
     </li>`
 }
 
-function createSkillEditFormLiField(){
+function createSkillEditFormLiField() {
     skillEditId++;
-    const skill = {id:skillEditId, title:""}; //database de değişiklik yapılacak
+    const skill = { id: skillEditId, title: "" }; //database de değişiklik yapılacak
     myData.skills.push(skill);
     document.getElementById("ul-skills").innerHTML += getSkillEditFormLiField(skill);
 
     createSkilElementForShowField(myData.skills) //content sayfasına da ekler.
 }
 
-//yeni eklenen yetenekleride content sayfasına yansıtmak için
-//tüm yapıda kullanılabilir
-function keyupGetAndSetSkillInputValue(event,name,objectName){
+//yeni eklenen yetenekleride content sayfasına yansıtmak için - *tüm yapıda kullanılabilir*
+function keyupGetAndSetSkillInputValue(event, name, objectName) {
     const element = event.target;
     const id = element.dataset["id"];
     const index = myData.skills.findIndex(p => p.id == id);
@@ -237,15 +290,15 @@ function keyupGetAndSetSkillInputValue(event,name,objectName){
     createSkilElementForShowField(myData.skills)
 }
 
-function removeSkillForEditForm(elementId){
+function removeSkillForEditForm(elementId) {
     //debugger
     const element = document.getElementById(elementId);
     const id = element.dataset["id"]; //data-id den alndı.
     //id'ye göre arıyarak indeksini bul.
     const index = myData.skills.findIndex(p => p.id == id);
-    
+
     //elementin kaydını siler
-    myData.skills.splice(index,1);
+    myData.skills.splice(index, 1);
 
     //edit formdan siler
     element.remove();
@@ -253,9 +306,40 @@ function removeSkillForEditForm(elementId){
     createSkilElementForShowField(myData.skills);
 }
 
-function setMyWorkExperiences(workExperiences){
+//! --- ******************** WORK EXPERIENCES ********************---*/
+
+function setMyWorkExperiences(workExperiences) {
+    createWorkExperienceElementForShowField(workExperiences)
+
+    let editText = "";
+    let id = 0;
+    for (let workExperience of workExperiences) {
+        id++;
+        editText += `
+            <div id="workExperienceEditDiv${id}" data-id=${workExperience.id} class="experience_content">
+            <div class="experience_time">
+                <span class="experience_rounder"></span>
+                <span class="experience_line"></span>
+            </div>
+
+            <div class="experience_data bd-grid">
+                    <label for="input-experience">Experience:</label>
+                    <input type="text" id="input-experience" value="${workExperience.title}" style="width: 250px;">
+                    <label for="input-year-departmant">Year and Depertmant:</label>
+                    <input type="text" id="input-year-departmant" value="${workExperience.yearSubtitle}" style="width: 250px;">
+                    <label for="input-description">Description:</label>
+                    <textarea id="input-description" rows="7" cols="38">${workExperience.description}</textarea>
+                    <button class="button-delete" onclick="removeWorkExperienceForEditForm('workExperienceEditDiv${id}')">Delete</button>
+            </div>  
+        </div>`
+
+        document.getElementById("experience-div").innerHTML = editText;
+    }
+}
+
+function createWorkExperienceElementForShowField(workExperiences) {
     let text = "";
-    for(let workExperience of workExperiences){
+    for (let workExperience of workExperiences) {
         text += ` 
         <div class="experience_content">
         <div class="experience_time">
@@ -274,23 +358,100 @@ function setMyWorkExperiences(workExperiences){
     document.getElementById("myExperiences").innerHTML = text;
 }
 
-function setMyCertificates(certificates){
+function removeWorkExperienceForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.workExperiences.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.workExperiences.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createWorkExperienceElementForShowField(myData.workExperiences)
+}
+
+//! --- ******************** CERTIFICATES ******************** ---*/
+
+function setMyCertificates(certificates) {
+    createCertificatesElementForShowField(certificates)
+
+    let editText = "";
+    let id = 0;
+    for (let certificate of certificates) {
+        id++;
+        editText += `
+        <div id="certificateEditDiv${id}" data-id=${certificate.id} class="certificate_content">
+                <label for="input-certificate">Certificate:</label><br>
+                <input type="text" id="input-certificate" value="${certificate.title}" style="width: 250px;"><br>
+                <label for="input-certificate_description">Description:</label><br>
+                <textarea  id="input-certificate_description" rows="6" cols="40">${certificate.description}</textarea><br>
+                <button class="button-delete" onclick="removeCertificateForEditForm('certificateEditDiv${id}')">Delete</button>
+        </div>`
+    }
+
+    document.getElementById("certificate-div").innerHTML = editText;
+}
+
+function createCertificatesElementForShowField(certificates) {
     let text = "";
-    for(let certificate of certificates){
+    for (let certificate of certificates) {
         text += `
         <div class="certificate_content">
             <h3 class="cerficate_title">${certificate.title}</h3>
             <p class="certificate_description">${certificate.description}</p>
-        </div>`                  
+        </div>`
     }
 
     console.log(certificates);
     document.getElementById("myCertificates").innerHTML = text;
 }
 
-function setMyReferences(references){
+function removeCertificateForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.certificates.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.certificates.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createCertificatesElementForShowField(myData.certificates)
+}
+
+//! --- ******************** REFERENCES ********************---*/
+
+function setMyReferences(references) {
+    createReferencesElementForShowField(references)
+
+    let editText = "";
+    let id = 0;
+    for (let reference of references) {
+        id++;
+        editText += `
+        <div id="referenceEditDiv${id}" data-id=${reference.id} class="references_content bd-grid">
+                <span>
+                    <label for="input-references_subtitle">Reference Subtitle:</label>
+                    <input type="text" id="input-references_subtitle" value="${reference.subtitle}"><br>
+                </span>
+                <span>
+                    <label for="input-references_title">References Title:</label>
+                    <input type="text" id="input-references_title" value="${reference.title}"><br>
+                </span>
+                <span>
+                    <label for="input-references_phone">Phone:</label>
+                    <input type="text" id="input-references_phone" value="${reference.phone}"><br>
+                </span>  
+                <span>
+                    <label for="input-references_email">Email:</label>
+                    <input type="text" id="input-references_email" value="${reference.email}"><br>
+                    <button class="button-delete" onclick="removeReferencesForEditForm('referenceEditDiv${id}')">Delete</button>
+                </span>
+        </div>`
+    }
+    document.getElementById("reference-div").innerHTML = editText;
+}
+
+function createReferencesElementForShowField(references) {
     let text = "";
-    for(let reference of references){
+    for (let reference of references) {
         text += `
         <div class="references_content bd-grid">
             <span class="references_subtitle">${reference.subtitle}</span>
@@ -306,9 +467,45 @@ function setMyReferences(references){
     document.getElementById("myReferences").innerHTML = text;
 }
 
-function setMyLanguages(languages){
-    let text = "";
+function removeReferencesForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.references.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.references.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createReferencesElementForShowField(myData.references)
+}
+
+//* --- ******************** LANGUAGES ********************---*/
+
+function setMyLanguages(languages) {
+    createLanguageElementForShowField(languages)
+
+    editText = "";
+    let id = 0;
     for(let language of languages){
+        id++;
+        editText += ` 
+        <ul id="languageEditDiv${id}" data-id=${language.id} class="languages_content bd-grid">
+            <li class="languages_name">
+                <span class="languages_circle"></span>
+                <label for="input-languages"></label>
+                <input type="text" id="input-languages" value=${language.name}><br><br>
+                <div>
+                <button class="button-delete" onclick="removeLanguageForEditForm('languageEditDiv${id}')">Delete</button>
+                </div>
+            </li>
+        </ul>`
+    }
+
+    document.getElementById("ul-languages").innerHTML = editText;
+}
+
+function createLanguageElementForShowField(languages){
+    let text = "";
+    for (let language of languages) {
         text += `
         <li class="languages_name">
             <span class="languages_circle"></span> ${language.name}
@@ -318,9 +515,26 @@ function setMyLanguages(languages){
     document.getElementById("myLanguages").innerHTML = text;
 }
 
-function setMyInterests(interests){
+function removeLanguageForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.languages.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.languages.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createLanguageElementForShowField(myData.languages)
+}
+
+//* --- ******************** INTERESTS ********************---*/
+
+function setMyInterests(interests) {
+    
+}
+
+function createInterestForEditForm(interests){
     let text = "";
-    for(let interest of interests){
+    for (let interest of interests) {
         text += `
         <div class="interests_content">
             <i class='${interest.icon}'></i>
