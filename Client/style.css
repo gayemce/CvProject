@@ -484,7 +484,7 @@ img{
     margin-bottom: .25rem;
 }
 
-/* Bu stil, ekran genişliği 1368 pikselden küçük olduğunda çalışır */
+/* ekran genişliği 1368 pikselden küçük olduğunda çalışır */
 @media screen and (max-width: 1377px) {
     .edit-form {
         width: 100%; 
@@ -492,13 +492,48 @@ img{
     }
     
     .main {
-        display: none !important;/* main formu gizle */
+        display: none !important;
     }
 
     .edit-bd-container{
-        width: calc(100% - 25rem);
-        margin-left: auto;
-        margin-right: auto;
+        width: 170%;
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+
+    .edit-bd-container .resume_left input{
+        width: 200px !important;
+        font-size: 0.8rem;
+        font-family: var(--body-font);
+        padding: 2px 2px 2px 4px;
+    }
+
+    .edit-bd-container .resume_right input,
+    .edit-bd-container .resume_right textarea{
+        width: 380px !important;
+        font-size: 0.8rem;
+        font-family: var(--body-font);
+        padding: 2px 2px 2px 4px;
+    }
+
+    /*========== save button ==========*/
+    .button-save{
+        position: relative;
+        left: 40rem;
+        bottom: 34.5rem;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+
+    /*========== cancel button ==========*/
+    .button-cancel{
+        position: relative;
+        left: 40rem;
+        bottom: 34.3rem;
+        font-size: 1.6rem;
+        color: var(--text-color);
+        cursor: pointer;
     }
 }
 
