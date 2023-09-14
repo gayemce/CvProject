@@ -44,14 +44,7 @@ let educations = [
         title: "COMPUTER ENGINEERING",
         studies: "Kastamonu University",
         year: "2018-2022"
-    },
-    {
-        id:1,
-        title: "MACHİNE ENGINEERING",
-        studies: "Gazi University",
-        year: "2018-2022"
-    }
-    
+    }   
 ]
 
 let skills = [
@@ -92,7 +85,7 @@ let certificates = [
     {
         id:0,
         title: "Programing 101: HTML",
-        description: "101: HTML training program and was awarded this certificate."
+        description: "101: HTML training program on January 22, 2023 and I was awarded this certificate."
     },
     {
         id:1,
@@ -106,13 +99,6 @@ let references = [
         id:0,
         subtitle: "Software Trainer",
         title: "Taner Saydam",
-        phone: "0541 541 5411",
-        email: "user@gmail.com"
-    },
-    {
-        id:1,
-        subtitle: "Lorem Ipsum",
-        title: "Deneme Deneme",
         phone: "0541 541 5411",
         email: "user@gmail.com"
     }
