@@ -142,7 +142,18 @@ function save() {
         })
 }
 
+//yeni eklenen ögeleri content sayfasına yansıtmak için - *tüm yapıda kullanılabilir*
+function keyupGetAndSetInputValue(event, name, objectName) {
+    const element = event.target;
+    const id = element.dataset["id"];
+    const index = myData[objectName].findIndex(p => p.id == id);
+
+    myData[objectName][index][name] = element.value;
+}
+
 //! --- ******************** SOCIAL MEDIAS ********************---*/
+
+
 
 function setMySocialMedias(socialMedias) {
     createSocialMediaElementForShowField(socialMedias)
@@ -227,7 +238,7 @@ function setMyEducations(educations) {
 
 function getEducationEditFormDivField(education){
     return `
-    <div id="educationEditDiv${educationEditId}" data-id=${education.id} class="education_content">
+    <div id="educationEditDiv${educationEditId}" data-id="${education.id}" class="education_content">
         <div class="education_time">
             <span class="education_rounder"></span>
             <span class="education_line"></span>
@@ -236,15 +247,15 @@ function getEducationEditFormDivField(education){
         <div class="education_data bd-grid">
             <span>
                 <label for="input-depertmant">Depertmant:</label>
-                <input type="text" id="input-depertmant" value="${education.title}" style="width: 175px;"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'title', 'educations'), createEducationElementForShowField(myData.educations)" type="text" id="input-depertmant${educationEditId}" data-id="${education.id}" value="${education.title}" style="width: 175px;"><br>
             </span>
             <span>
                 <label for="input-univercity">Univercity:</label>
-                <input type="text" id="input-Univercity" value="${education.studies}" style="width: 175px;"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'studies', 'educations'), createEducationElementForShowField(myData.educations)" type="text" id="input-Univercity${educationEditId}" data-id="${education.id}" value="${education.studies}" style="width: 175px;"><br>
             </span>
             <span>
                 <label for="input-year">Education Year:</label>
-                <input type="text" id="input-year" value="${education.year}" style="width: 175px;"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'year', 'educations'), createEducationElementForShowField(myData.educations)" type="text" id="input-year${educationEditId}" data-id="${education.id}" value="${education.year}" style="width: 175px;"><br>
             </span>
             <button class="button-delete" onclick="removeEducationForEditForm('educationEditDiv${educationEditId}')">Delete</button>
         </div>
@@ -307,7 +318,7 @@ function getSkillEditFormLiField(skill) {
         <span class="skills_circle"></span>
             <span>
                 <label for="input-skillTitle"></label>
-                <input onkeyup="keyupGetAndSetSkillInputValue(event, 'title', 'skills')" type="text" id="input-skillTitle${skillEditId}" data-id="${skill.id}" value="${skill.title}" style="width: 150px;"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'title', 'skills'), createSkilElementForShowField(myData.skills)" type="text" id="input-skillTitle${skillEditId}" data-id="${skill.id}" value="${skill.title}" style="width: 150px;"><br>
                 <button class="button-delete" onclick="removeSkillForEditForm('skillEditDiv${skillEditId}')">Delete</button>
             </span>
     </li>`
@@ -320,16 +331,6 @@ function createSkillEditFormLiField() {
     document.getElementById("ul-skills").innerHTML += getSkillEditFormLiField(skill);
 
     createSkilElementForShowField(myData.skills) //content sayfasına da ekler.
-}
-
-//yeni eklenen yetenekleride content sayfasına yansıtmak için - *tüm yapıda kullanılabilir*
-function keyupGetAndSetSkillInputValue(event, name, objectName) {
-    const element = event.target;
-    const id = element.dataset["id"];
-    const index = myData.skills.findIndex(p => p.id == id);
-
-    myData[objectName][index][name] = element.value;
-    createSkilElementForShowField(myData.skills)
 }
 
 function removeSkillForEditForm(elementId) {
@@ -387,7 +388,7 @@ function setMyWorkExperiences(workExperiences) {
 
 function getWorkExperienceEditFormDivField(workExperience){
     return `
-    <div id="workExperienceEditDiv${workExperienceEditId}" data-id=${workExperience.id} class="experience_content">
+    <div id="workExperienceEditDiv${workExperienceEditId}" data-id="${workExperience.id}" class="experience_content">
     <div class="experience_time">
         <span class="experience_rounder"></span>
         <span class="experience_line"></span>
@@ -395,11 +396,11 @@ function getWorkExperienceEditFormDivField(workExperience){
 
     <div class="experience_data bd-grid">
             <label for="input-experience">Experience:</label>
-            <input type="text" id="input-experience" value="${workExperience.title}" style="width: 250px;">
+            <input onkeyup="keyupGetAndSetInputValue(event, 'title', 'workExperiences'), createWorkExperienceElementForShowField(myData.workExperiences)" type="text" id="input-experience${workExperienceEditId}" data-id="${workExperience.id}" value="${workExperience.title}" style="width: 250px;">
             <label for="input-year-departmant">Year and Depertmant:</label>
-            <input type="text" id="input-year-departmant" value="${workExperience.yearSubtitle}" style="width: 250px;">
+            <input onkeyup="keyupGetAndSetInputValue(event, 'yearSubtitle', 'workExperiences'), createWorkExperienceElementForShowField(myData.workExperiences)" type="text" id="input-year-departmant${workExperienceEditId}" data-id="${workExperience.id}" value="${workExperience.yearSubtitle}" style="width: 250px;">
             <label for="input-description">Description:</label>
-            <textarea id="input-description" rows="7" cols="38">${workExperience.description}</textarea>
+            <textarea onkeyup="keyupGetAndSetInputValue(event, 'description', 'workExperiences'), createWorkExperienceElementForShowField(myData.workExperiences)" id="input-description${workExperienceEditId}" data-id="${workExperience.id}" rows="7" cols="38">${workExperience.description}</textarea>
             <button class="button-delete" onclick="removeWorkExperienceForEditForm('workExperienceEditDiv${workExperienceEditId}')">Delete</button>
     </div>  
 </div>`
@@ -457,11 +458,13 @@ function setMyCertificates(certificates) {
 
 function getCertificateEditFormDivField(certificate){
     return `
-    <div id="certificateEditDiv${certificateEditId}" data-id=${certificate.id} class="certificate_content">
+    <div id="certificateEditDiv${certificateEditId}" data-id="${certificate.id}" class="certificate_content">
             <label for="input-certificate">Certificate:</label><br>
-            <input type="text" id="input-certificate" value="${certificate.title}" style="width: 250px;"><br>
+            <input onkeyup="keyupGetAndSetInputValue(event, 'title', 'certificates'), createCertificatesElementForShowField(myData.certificates)" type="text" id="input-certificate${certificateEditId}" data-id="${certificate.id}" value="${certificate.title}" style="width: 250px;"><br>
+
             <label for="input-certificate_description">Description:</label><br>
-            <textarea  id="input-certificate_description" rows="6" cols="40">${certificate.description}</textarea><br>
+            <textarea onkeyup="keyupGetAndSetInputValue(event, 'description', 'certificates'), createCertificatesElementForShowField(myData.certificates)"  id="input-certificate_description${certificateEditId}" data-id="${certificate.id}" rows="6" cols="40">${certificate.description}</textarea><br>
+
             <button class="button-delete" onclick="removeCertificateForEditForm('certificateEditDiv${certificateEditId}')">Delete</button>
     </div>`
 }
@@ -520,22 +523,22 @@ function setMyReferences(references) {
 
 function getReferenceEditFormDivField(reference){
     return `
-    <div id="referenceEditDiv${referenceEditId}" data-id=${reference.id} class="references_content bd-grid">
+    <div id="referenceEditDiv${referenceEditId}" data-id="${reference.id}" class="references_content bd-grid">
             <span>
                 <label for="input-references_subtitle">Reference Subtitle:</label>
-                <input type="text" id="input-references_subtitle" value="${reference.subtitle}"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'subtitle', 'references'), createReferencesElementForShowField(myData.references)" type="text" id="input-references_subtitle${referenceEditId}" data-id="${reference.id}" value="${reference.subtitle}"><br>
             </span>
             <span>
                 <label for="input-references_title">References Title:</label>
-                <input type="text" id="input-references_title" value="${reference.title}"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'title', 'references'), createReferencesElementForShowField(myData.references)" type="text" id="input-references_title${referenceEditId}" data-id="${reference.id}" value="${reference.title}"><br>
             </span>
             <span>
                 <label for="input-references_phone">Phone:</label>
-                <input type="text" id="input-references_phone" value="${reference.phone}"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'phone', 'references'), createReferencesElementForShowField(myData.references)" type="text" id="input-references_phone${referenceEditId}" data-id="${reference.id}" value="${reference.phone}"><br>
             </span>  
             <span>
                 <label for="input-references_email">Email:</label>
-                <input type="text" id="input-references_email" value="${reference.email}"><br>
+                <input onkeyup="keyupGetAndSetInputValue(event, 'email', 'references'), createReferencesElementForShowField(myData.references)" type="text" id="input-references_email${referenceEditId}" data-id="${reference.id}" value="${reference.email}"><br>
                 <button class="button-delete" onclick="removeReferencesForEditForm('referenceEditDiv${referenceEditId}')">Delete</button>
             </span>
     </div>`
@@ -582,12 +585,12 @@ function setMyLanguages(languages) {
 
 function getLanguageEditFormUlField(language){
     return ` 
-    <ul id="languageEditDiv${languageEditId}" data-id=${language.id} class="languages_content bd-grid">
+    <ul id="languageEditDiv${languageEditId}" data-id="${language.id}" class="languages_content bd-grid">
         <li class="languages_name">
             <span class="languages_circle"></span>
             <span>
             <label for="input-languages"></label>
-            <input type="text" id="input-languages" value=${language.name}><br>
+            <input onkeyup="keyupGetAndSetInputValue(event, 'name', 'languages'), createLanguageElementForShowField(myData.languages)" type="text" id="input-languages${languageEditId}" data-id="${language.id}" value=${language.name}><br>
             <button class="button-delete" onclick="removeLanguageForEditForm('languageEditDiv${languageEditId}')">Delete</button>
             </span>
         </li>
@@ -616,6 +619,19 @@ function removeLanguageForEditForm(elementId) {
 
 //! --- ******************** INTERESTS ********************---*/
 
+function createInterestElementForShowField(interests){
+    let text = "";
+    for (let interest of interests) {
+        text += `
+        <div class="interests_content">
+            <i class='${interest.icon}'></i>
+            <span class="interests_name">${interest.name}</span>
+        </div>`
+    }
+
+    document.getElementById("myInterests").innerHTML = text;
+}
+
 let interestEditId = 0;
 
 function setMyInterests(interests) {
@@ -632,26 +648,22 @@ function setMyInterests(interests) {
 
 function getInterestEditFormDivField(interest){
     return `
-    <div id="interestEditDiv${interestEditId}" data-id=${interest.id} class="edit-interests_content">
+    <div id="interestEditDiv${interestEditId}" data-id="${interest.id}" class="edit-interests_content">
         <span>
             <label for="input-interests_name"></label>
-            <input type="text" id="input-interests_name" value="${interest.name}"><br>
+            <input onkeyup="keyupGetAndSetInputValue(event, 'name', 'interests'), createInterestElementForShowField(myData.interests)" type="text" id="input-interests_name${interestEditId}" data-id="${interest.id}" value="${interest.name}"><br>
             <button class="button-delete" onclick="removeInterestForEditForm('interestEditDiv${interestEditId}')">Delete</button>
         </span>
     </div>`
 }
 
-function createInterestElementForShowField(interests){
-    let text = "";
-    for (let interest of interests) {
-        text += `
-        <div class="interests_content">
-            <i class='${interest.icon}'></i>
-            <span class="interests_name">${interest.name}</span>
-        </div>`
-    }
+function createInterestEditFormDivField() {
+    interestEditId++;
+    const interest = { id: interestEditId, name: ""}; //database de değişiklik yapılacak
+    myData.interests.push(interest);
+    document.getElementById("interest-div").innerHTML += getInterestEditFormDivField(interest);
 
-    document.getElementById("myInterests").innerHTML = text;
+    createInterestElementForShowField(myData.interests) //content sayfasına da ekler.
 }
 
 function removeInterestForEditForm(elementId) {
