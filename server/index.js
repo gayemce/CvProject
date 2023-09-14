@@ -108,6 +108,13 @@ let references = [
         title: "Taner Saydam",
         phone: "0541 541 5411",
         email: "user@gmail.com"
+    },
+    {
+        id:1,
+        subtitle: "Lorem Ipsum",
+        title: "Deneme Deneme",
+        phone: "0541 541 5411",
+        email: "user@gmail.com"
     }
 ]
 

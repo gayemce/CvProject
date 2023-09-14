@@ -142,7 +142,7 @@ function save() {
         })
 }
 
-//* --- ******************** SOCIAL MEDIAS ********************---*/
+//! --- ******************** SOCIAL MEDIAS ********************---*/
 
 function setMySocialMedias(socialMedias) {
     createSocialMediaElementForShowField(socialMedias)
@@ -188,44 +188,6 @@ function removeSocialMediaForEditForm(elementId) {
 }
 
 //! --- ******************** EDUCATIONS ********************---*/
-
-function setMyEducations(educations) {
-    createEducationElementForShowField(educations);
-
-    //normal formda kaç veri varsa o kadar input gelsin
-    let editText = "";
-    let id = 0;
-    for (let education of educations) {
-        id++;
-        editText += `
-            <div id="educationEditDiv${id}" data-id=${education.id} class="education_content">
-                <div class="education_time">
-                    <span class="education_rounder"></span>
-                    <span class="education_line"></span>
-                </div>
-
-                <div class="education_data bd-grid">
-                    <span>
-                        <label for="input-depertmant">Depertmant:</label>
-                        <input type="text" id="input-depertmant" value="${education.title}" style="width: 175px;"><br>
-                    </span>
-                    <span>
-                        <label for="input-univercity">Univercity:</label>
-                        <input type="text" id="input-Univercity" value="${education.studies}" style="width: 175px;"><br>
-                    </span>
-                    <span>
-                        <label for="input-year">Education Year:</label>
-                        <input type="text" id="input-year" value="${education.year}" style="width: 175px;"><br>
-                    </span>
-                    <button class="button-delete" onclick="removeEducationForEditForm('educationEditDiv${id}')">Delete</button>
-                </div>
-            </div>`
-
-        document.getElementById("education-div").innerHTML = editText;
-    }
-
-}
-
 function createEducationElementForShowField(educations) {
     let text = "";
     for (let education of educations) {
@@ -247,6 +209,57 @@ function createEducationElementForShowField(educations) {
     document.getElementById("myEducation").innerHTML = text;
 }
 
+let educationEditId = 0;
+
+function setMyEducations(educations) {
+    createEducationElementForShowField(educations);
+
+    //normal formda kaç veri varsa o kadar input gelsin
+    let editText = "";
+    for (let education of educations) {
+        educationEditId++;
+        editText += getEducationEditFormDivField(education);
+
+        document.getElementById("education-div").innerHTML = editText;
+    }
+
+}
+
+function getEducationEditFormDivField(education){
+    return `
+    <div id="educationEditDiv${educationEditId}" data-id=${education.id} class="education_content">
+        <div class="education_time">
+            <span class="education_rounder"></span>
+            <span class="education_line"></span>
+        </div>
+
+        <div class="education_data bd-grid">
+            <span>
+                <label for="input-depertmant">Depertmant:</label>
+                <input type="text" id="input-depertmant" value="${education.title}" style="width: 175px;"><br>
+            </span>
+            <span>
+                <label for="input-univercity">Univercity:</label>
+                <input type="text" id="input-Univercity" value="${education.studies}" style="width: 175px;"><br>
+            </span>
+            <span>
+                <label for="input-year">Education Year:</label>
+                <input type="text" id="input-year" value="${education.year}" style="width: 175px;"><br>
+            </span>
+            <button class="button-delete" onclick="removeEducationForEditForm('educationEditDiv${educationEditId}')">Delete</button>
+        </div>
+    </div>`
+}
+
+function createEducationEditFormDivField() {
+    educationEditId++;
+    const education = { id: educationEditId, title: "", studies:"", year:""}; //database de değişiklik yapılacak
+    myData.educations.push(education);
+    document.getElementById("education-div").innerHTML += getEducationEditFormDivField(education);
+
+    createEducationElementForShowField(myData.educations) //content sayfasına da ekler.
+}
+
 //elementi ve myDatada ki kaydı siler. 
 function removeEducationForEditForm(elementId) {
     const element = document.getElementById(elementId);
@@ -260,7 +273,6 @@ function removeEducationForEditForm(elementId) {
 }
 
 //! --- ******************** SKILLS ********************---*/
-
 function createSkilElementForShowField(skills) {
     let text = "";
     for (let skill of skills) {
@@ -338,35 +350,6 @@ function removeSkillForEditForm(elementId) {
 
 //! --- ******************** WORK EXPERIENCES ********************---*/
 
-function setMyWorkExperiences(workExperiences) {
-    createWorkExperienceElementForShowField(workExperiences)
-
-    let editText = "";
-    let id = 0;
-    for (let workExperience of workExperiences) {
-        id++;
-        editText += `
-            <div id="workExperienceEditDiv${id}" data-id=${workExperience.id} class="experience_content">
-            <div class="experience_time">
-                <span class="experience_rounder"></span>
-                <span class="experience_line"></span>
-            </div>
-
-            <div class="experience_data bd-grid">
-                    <label for="input-experience">Experience:</label>
-                    <input type="text" id="input-experience" value="${workExperience.title}" style="width: 250px;">
-                    <label for="input-year-departmant">Year and Depertmant:</label>
-                    <input type="text" id="input-year-departmant" value="${workExperience.yearSubtitle}" style="width: 250px;">
-                    <label for="input-description">Description:</label>
-                    <textarea id="input-description" rows="7" cols="38">${workExperience.description}</textarea>
-                    <button class="button-delete" onclick="removeWorkExperienceForEditForm('workExperienceEditDiv${id}')">Delete</button>
-            </div>  
-        </div>`
-
-        document.getElementById("experience-div").innerHTML = editText;
-    }
-}
-
 function createWorkExperienceElementForShowField(workExperiences) {
     let text = "";
     for (let workExperience of workExperiences) {
@@ -388,6 +371,49 @@ function createWorkExperienceElementForShowField(workExperiences) {
     document.getElementById("myExperiences").innerHTML = text;
 }
 
+let workExperienceEditId = 0;
+
+function setMyWorkExperiences(workExperiences) {
+    createWorkExperienceElementForShowField(workExperiences)
+
+    let editText = "";
+    for (let workExperience of workExperiences) {
+        workExperienceEditId++;
+        editText += getWorkExperienceEditFormDivField(workExperience);
+
+        document.getElementById("experience-div").innerHTML = editText;
+    }
+}
+
+function getWorkExperienceEditFormDivField(workExperience){
+    return `
+    <div id="workExperienceEditDiv${workExperienceEditId}" data-id=${workExperience.id} class="experience_content">
+    <div class="experience_time">
+        <span class="experience_rounder"></span>
+        <span class="experience_line"></span>
+    </div>
+
+    <div class="experience_data bd-grid">
+            <label for="input-experience">Experience:</label>
+            <input type="text" id="input-experience" value="${workExperience.title}" style="width: 250px;">
+            <label for="input-year-departmant">Year and Depertmant:</label>
+            <input type="text" id="input-year-departmant" value="${workExperience.yearSubtitle}" style="width: 250px;">
+            <label for="input-description">Description:</label>
+            <textarea id="input-description" rows="7" cols="38">${workExperience.description}</textarea>
+            <button class="button-delete" onclick="removeWorkExperienceForEditForm('workExperienceEditDiv${workExperienceEditId}')">Delete</button>
+    </div>  
+</div>`
+}
+
+function createWorkExperienceEditFormDivField() {
+    workExperienceEditId++;
+    const workExperience = { id: workExperienceEditId, title: "", yearSubtitle: "", description: ""}; //database de değişiklik yapılacak
+    myData.workExperiences.push(workExperience);
+    document.getElementById("experience-div").innerHTML += getWorkExperienceEditFormDivField(workExperience);
+
+    createWorkExperienceElementForShowField(myData.workExperiences) //content sayfasına da ekler.
+}
+
 function removeWorkExperienceForEditForm(elementId) {
     const element = document.getElementById(elementId);
     const id = element.dataset["id"];
@@ -400,26 +426,6 @@ function removeWorkExperienceForEditForm(elementId) {
 }
 
 //! --- ******************** CERTIFICATES ******************** ---*/
-
-function setMyCertificates(certificates) {
-    createCertificatesElementForShowField(certificates)
-
-    let editText = "";
-    let id = 0;
-    for (let certificate of certificates) {
-        id++;
-        editText += `
-        <div id="certificateEditDiv${id}" data-id=${certificate.id} class="certificate_content">
-                <label for="input-certificate">Certificate:</label><br>
-                <input type="text" id="input-certificate" value="${certificate.title}" style="width: 250px;"><br>
-                <label for="input-certificate_description">Description:</label><br>
-                <textarea  id="input-certificate_description" rows="6" cols="40">${certificate.description}</textarea><br>
-                <button class="button-delete" onclick="removeCertificateForEditForm('certificateEditDiv${id}')">Delete</button>
-        </div>`
-    }
-
-    document.getElementById("certificate-div").innerHTML = editText;
-}
 
 function createCertificatesElementForShowField(certificates) {
     let text = "";
@@ -435,6 +441,40 @@ function createCertificatesElementForShowField(certificates) {
     document.getElementById("myCertificates").innerHTML = text;
 }
 
+let certificateEditId = 0;
+
+function setMyCertificates(certificates) {
+    createCertificatesElementForShowField(certificates)
+
+    let editText = "";
+    for (let certificate of certificates) {
+        certificateEditId++;
+        editText += getCertificateEditFormDivField(certificate);
+    }
+
+    document.getElementById("certificate-div").innerHTML = editText;
+}
+
+function getCertificateEditFormDivField(certificate){
+    return `
+    <div id="certificateEditDiv${certificateEditId}" data-id=${certificate.id} class="certificate_content">
+            <label for="input-certificate">Certificate:</label><br>
+            <input type="text" id="input-certificate" value="${certificate.title}" style="width: 250px;"><br>
+            <label for="input-certificate_description">Description:</label><br>
+            <textarea  id="input-certificate_description" rows="6" cols="40">${certificate.description}</textarea><br>
+            <button class="button-delete" onclick="removeCertificateForEditForm('certificateEditDiv${certificateEditId}')">Delete</button>
+    </div>`
+}
+
+function createCertificateEditFormDivField() {
+    certificateEditId++;
+    const certificate = { id: certificateEditId, title: "",  description: ""}; //database de değişiklik yapılacak
+    myData.certificates.push(certificate);
+    document.getElementById("certificate-div").innerHTML += getCertificateEditFormDivField(certificate);
+
+    createCertificatesElementForShowField(myData.certificates) //content sayfasına da ekler.
+}
+
 function removeCertificateForEditForm(elementId) {
     const element = document.getElementById(elementId);
     const id = element.dataset["id"];
@@ -447,38 +487,6 @@ function removeCertificateForEditForm(elementId) {
 }
 
 //! --- ******************** REFERENCES ********************---*/
-
-function setMyReferences(references) {
-    createReferencesElementForShowField(references)
-
-    let editText = "";
-    let id = 0;
-    for (let reference of references) {
-        id++;
-        editText += `
-        <div id="referenceEditDiv${id}" data-id=${reference.id} class="references_content bd-grid">
-                <span>
-                    <label for="input-references_subtitle">Reference Subtitle:</label>
-                    <input type="text" id="input-references_subtitle" value="${reference.subtitle}"><br>
-                </span>
-                <span>
-                    <label for="input-references_title">References Title:</label>
-                    <input type="text" id="input-references_title" value="${reference.title}"><br>
-                </span>
-                <span>
-                    <label for="input-references_phone">Phone:</label>
-                    <input type="text" id="input-references_phone" value="${reference.phone}"><br>
-                </span>  
-                <span>
-                    <label for="input-references_email">Email:</label>
-                    <input type="text" id="input-references_email" value="${reference.email}"><br>
-                    <button class="button-delete" onclick="removeReferencesForEditForm('referenceEditDiv${id}')">Delete</button>
-                </span>
-        </div>`
-    }
-    document.getElementById("reference-div").innerHTML = editText;
-}
-
 function createReferencesElementForShowField(references) {
     let text = "";
     for (let reference of references) {
@@ -487,14 +495,50 @@ function createReferencesElementForShowField(references) {
             <span class="references_subtitle">${reference.subtitle}</span>
             <h3 class="references_title">${reference.title}</h3>
             <ul class="references_contact">
-                <li>Phone: ${reference.phone}</li>
-                <li>Email: ${reference.email}</li>
+                <li>${reference.phone}</li>
+                <li>${reference.email}</li>
             </ul>
         </div>`
     }
 
     console.log(references);
     document.getElementById("myReferences").innerHTML = text;
+}
+
+let referenceEditId = 0;
+
+function setMyReferences(references) {
+    createReferencesElementForShowField(references)
+
+    let editText = "";
+    for (let reference of references) {
+        referenceEditId++;
+        editText += getReferenceEditFormDivField(reference);
+    }
+    document.getElementById("reference-div").innerHTML = editText;
+}
+
+function getReferenceEditFormDivField(reference){
+    return `
+    <div id="referenceEditDiv${referenceEditId}" data-id=${reference.id} class="references_content bd-grid">
+            <span>
+                <label for="input-references_subtitle">Reference Subtitle:</label>
+                <input type="text" id="input-references_subtitle" value="${reference.subtitle}"><br>
+            </span>
+            <span>
+                <label for="input-references_title">References Title:</label>
+                <input type="text" id="input-references_title" value="${reference.title}"><br>
+            </span>
+            <span>
+                <label for="input-references_phone">Phone:</label>
+                <input type="text" id="input-references_phone" value="${reference.phone}"><br>
+            </span>  
+            <span>
+                <label for="input-references_email">Email:</label>
+                <input type="text" id="input-references_email" value="${reference.email}"><br>
+                <button class="button-delete" onclick="removeReferencesForEditForm('referenceEditDiv${referenceEditId}')">Delete</button>
+            </span>
+    </div>`
 }
 
 function removeReferencesForEditForm(elementId) {
@@ -510,29 +554,6 @@ function removeReferencesForEditForm(elementId) {
 
 //! --- ******************** LANGUAGES ********************---*/
 
-function setMyLanguages(languages) {
-    createLanguageElementForShowField(languages)
-
-    editText = "";
-    let id = 0;
-    for(let language of languages){
-        id++;
-        editText += ` 
-        <ul id="languageEditDiv${id}" data-id=${language.id} class="languages_content bd-grid">
-            <li class="languages_name">
-                <span class="languages_circle"></span>
-                <span>
-                <label for="input-languages"></label>
-                <input type="text" id="input-languages" value=${language.name}><br>
-                <button class="button-delete" onclick="removeLanguageForEditForm('languageEditDiv${id}')">Delete</button>
-                </span>
-            </li>
-        </ul>`
-    }
-
-    document.getElementById("ul-languages").innerHTML = editText;
-}
-
 function createLanguageElementForShowField(languages){
     let text = "";
     for (let language of languages) {
@@ -543,6 +564,43 @@ function createLanguageElementForShowField(languages){
     }
 
     document.getElementById("myLanguages").innerHTML = text;
+}
+
+let languageEditId = 0;
+
+function setMyLanguages(languages) {
+    createLanguageElementForShowField(languages)
+
+    editText = "";
+    for(let language of languages){
+        languageEditId++;
+        editText += getLanguageEditFormUlField(language);
+    }
+
+    document.getElementById("ul-languages").innerHTML = editText;
+}
+
+function getLanguageEditFormUlField(language){
+    return ` 
+    <ul id="languageEditDiv${languageEditId}" data-id=${language.id} class="languages_content bd-grid">
+        <li class="languages_name">
+            <span class="languages_circle"></span>
+            <span>
+            <label for="input-languages"></label>
+            <input type="text" id="input-languages" value=${language.name}><br>
+            <button class="button-delete" onclick="removeLanguageForEditForm('languageEditDiv${languageEditId}')">Delete</button>
+            </span>
+        </li>
+    </ul>`
+}
+
+function createLanguageEditFormDivField() {
+    languageEditId++;
+    const language = { id: languageEditId, name: ""}; //database de değişiklik yapılacak
+    myData.languages.push(language);
+    document.getElementById("ul-languages").innerHTML += getLanguageEditFormUlField(language);
+
+    createLanguageElementForShowField(myData.languages) //content sayfasına da ekler.
 }
 
 function removeLanguageForEditForm(elementId) {
@@ -558,24 +616,29 @@ function removeLanguageForEditForm(elementId) {
 
 //! --- ******************** INTERESTS ********************---*/
 
+let interestEditId = 0;
+
 function setMyInterests(interests) {
     createInterestElementForShowField(interests)
 
     let editText = "";
-    let id = 0;
         for(let interest of interests){
-            id++;
-            editText += `
-            <div id="interestEditDiv${id}" data-id=${interest.id} class="edit-interests_content">
-                <span>
-                    <label for="input-interests_name"></label>
-                    <input type="text" id="input-interests_name" value="${interest.name}"><br>
-                    <button class="button-delete" onclick="removeInterestForEditForm('interestEditDiv${id}')">Delete</button>
-                </span>
-            </div>`
+            interestEditId++;
+            editText += getInterestEditFormDivField(interest);
         }
 
     document.getElementById("interest-div").innerHTML = editText;
+}
+
+function getInterestEditFormDivField(interest){
+    return `
+    <div id="interestEditDiv${interestEditId}" data-id=${interest.id} class="edit-interests_content">
+        <span>
+            <label for="input-interests_name"></label>
+            <input type="text" id="input-interests_name" value="${interest.name}"><br>
+            <button class="button-delete" onclick="removeInterestForEditForm('interestEditDiv${interestEditId}')">Delete</button>
+        </span>
+    </div>`
 }
 
 function createInterestElementForShowField(interests){

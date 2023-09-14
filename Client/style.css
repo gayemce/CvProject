@@ -68,36 +68,19 @@ body.scale-cv{
     height: 85vh;
 }
 
-.button-educationAdd{
+.button-educationAdd, .button-skillsAdd,
+.button-experienceAdd, .button-certificatesAdd,
+.button-languagesAdd{
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
 }
 
-.button-skillsAdd{
-    font-size: 1.2rem;
-    margin-left: 70px;
-    cursor: pointer;
-}
-
-.button-experienceAdd{
+/* .button-referencesAdd{
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
-}
-
-.button-certificatesAdd{
-    font-size: 1.2rem;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
-.button-referencesAdd{
-    font-size: 1.2rem;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
+} */
 
 .button-delete{
     font-family: var(--body-font);
