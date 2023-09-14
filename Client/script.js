@@ -152,28 +152,6 @@ function keyupGetAndSetInputValue(event, name, objectName) {
 }
 
 //! --- ******************** SOCIAL MEDIAS ********************---*/
-
-
-
-function setMySocialMedias(socialMedias) {
-    createSocialMediaElementForShowField(socialMedias)
-
-    let id = 0;
-    let editText = "";
-        for(let socialMedia of socialMedias){
-            id++;
-            editText += `
-            <span id="socialMediaEditDiv${id}" data-id=${socialMedia.id}>
-                <i class='${socialMedia.icon}'></i>
-                <label for="input-linkedin">:</label>
-                <input type="text" id="input-linkedin" value="${socialMedia.name}" style="width: 150px;"><br>
-            </span>
-            <button class="button-delete" onclick="removeSocialMediaForEditForm('socialMediaEditDiv${id}')">Delete</button>` 
-        }
-    
-    document.getElementById("socialmedia-div").innerHTML = editText;
-}
-
 function createSocialMediaElementForShowField(socialMedias){
     let text = "";
     for (let socialMedia of socialMedias) {
@@ -186,6 +164,40 @@ function createSocialMediaElementForShowField(socialMedias){
     console.log(socialMedias);
     document.getElementById("mySocialMedias").innerHTML = text;
 }
+
+let socialMediaEditId = 0;
+
+function setMySocialMedias(socialMedias) {
+    createSocialMediaElementForShowField(socialMedias)
+
+    let editText = "";
+        for(let socialMedia of socialMedias){
+            socialMediaEditId++;
+            editText += getSocialMediaEditFormDivField(socialMedia)
+        }
+    
+    document.getElementById("socialmedia-div").innerHTML = editText;
+}
+
+function getSocialMediaEditFormDivField(socialMedia){
+    return `
+    <span id="socialMediaEditDiv${socialMediaEditId}" data-id="${socialMedia.id}">
+        <i class='${socialMedia.icon}'></i>
+
+        <label for=""input-socialMedias${socialMediaEditId}">:</label>
+        <input onkeyup="keyupGetAndSetInputValue(event, 'name', 'socialMedias'), createSocialMediaElementForShowField(myData.socialMedias)" type="text" id="input-socialMedias${socialMediaEditId}" data-id="${socialMedia.id}" value="${socialMedia.name}" style="width: 150px;"><br>
+        <button class="button-delete" onclick="removeSocialMediaForEditForm('socialMediaEditDiv${socialMediaEditId}')">Delete</button>
+    </span>`
+}
+
+// function createEducationEditFormDivField() {
+//     socialMediaEditId++;
+//     const socialMedia = { id: socialMediaEditId, name: ""}; //database de değişiklik yapılacak
+//     myData.socialMedias.push(socialMedia);
+//     document.getElementById("socialmedia-div").innerHTML += getSocialMediaEditFormDivField(socialMedia);
+
+//     createSocialMediaElementForShowField(myData.socialMedias) //content sayfasına da ekler.
+// }
 
 function removeSocialMediaForEditForm(elementId) {
     const element = document.getElementById(elementId);
