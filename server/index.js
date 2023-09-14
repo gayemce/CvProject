@@ -104,13 +104,6 @@ let certificates = [
 let references = [
     {
         id:0,
-        subtitle: "Founder of Istanbul Egitim Akademi",
-        title: "Caner Mollaoğlu",
-        phone: "0541 541 5411",
-        email: "user@gmail.com"
-    },
-    {
-        id:1,
         subtitle: "Software Trainer",
         title: "Taner Saydam",
         phone: "0541 541 5411",
@@ -139,11 +132,6 @@ let interests = [
         id:1,
         icon: "bx bx-book-heart interests_icon",
         name: "Read"
-    },
-    {
-        id:2,
-        icon: "bx bxs-plane-alt interests_icon",
-        name: "Travel"
     }
 ]
 
