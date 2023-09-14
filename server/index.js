@@ -131,20 +131,19 @@ let languages = [
 
 let interests = [
     {
+        id:0,
         icon: "bx bx-headphone interests_icon",
         name: "Music"
     },
     {
+        id:1,
         icon: "bx bx-book-heart interests_icon",
         name: "Read"
     },
     {
+        id:2,
         icon: "bx bxs-plane-alt interests_icon",
         name: "Travel"
-    },
-    {
-        icon: "bx bx-dumbbell interests_icon",
-        name: "Fitness"
     }
 ]
 

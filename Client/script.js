@@ -491,11 +491,11 @@ function setMyLanguages(languages) {
         <ul id="languageEditDiv${id}" data-id=${language.id} class="languages_content bd-grid">
             <li class="languages_name">
                 <span class="languages_circle"></span>
+                <span>
                 <label for="input-languages"></label>
-                <input type="text" id="input-languages" value=${language.name}><br><br>
-                <div>
+                <input type="text" id="input-languages" value=${language.name}><br>
                 <button class="button-delete" onclick="removeLanguageForEditForm('languageEditDiv${id}')">Delete</button>
-                </div>
+                </span>
             </li>
         </ul>`
     }
@@ -529,10 +529,27 @@ function removeLanguageForEditForm(elementId) {
 //* --- ******************** INTERESTS ********************---*/
 
 function setMyInterests(interests) {
-    
+    createInterestElementForShowField(interests)
+
+    let editText = "";
+    let id = 0;
+        for(let interest of interests){
+            id++;
+            editText += `
+            <div id="interestEditDiv${id}" data-id=${interest.id} class="edit-interests_content">
+                <span class="interests_name"></span>
+                <span>
+                    <label for="input-interests_name"></label>
+                    <input type="text" id="input-interests_name" value="${interest.name}"><br>
+                    <button class="button-delete" onclick="removeInterestForEditForm('interestEditDiv${id}')">Delete</button>
+                </span>
+            </div>`
+        }
+
+    document.getElementById("interest-div").innerHTML = editText;
 }
 
-function createInterestForEditForm(interests){
+function createInterestElementForShowField(interests){
     let text = "";
     for (let interest of interests) {
         text += `
@@ -543,4 +560,15 @@ function createInterestForEditForm(interests){
     }
 
     document.getElementById("myInterests").innerHTML = text;
+}
+
+function removeInterestForEditForm(elementId) {
+    const element = document.getElementById(elementId);
+    const id = element.dataset["id"];
+    const index = myData.interests.findIndex(p => p.id == id);//direkt id'ye göre silemediği için index bulunur
+    myData.interests.splice(index, 1); //serverdaki kaydı siler
+    element.remove(); //editformdan siler.
+
+    //silinen öge, content formun yenilenmesi ile myDatadaki yeni kayıtları getirerek contentformda da silinmiş olur
+    createInterestElementForShowField(myData.interests)
 }
