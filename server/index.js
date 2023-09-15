@@ -240,47 +240,181 @@ app.post("/api/set", async(req,res) => {
     newPerson._id = person._id;
     await Personal.findByIdAndUpdate(person._id, newPerson); //Id'ye göre kaydı bulur ve günceller.
 
-    //*Silme
-    skills = body.skills;
-
-    const currentSkills = await Skill.find();
-    for(let c of currentSkills){//databasede id listede aratılır yoksa content sayfasında silinir
-        const result = skills.findIndex(p=> p._id === c.id);
+    /* ----- SocialMeadia - silme - güncelleme (ekleme pasif)----- */
+    socialMedias = body.socialMedias;
+    const currentSocialMedias = await SocialMedia.find();
+    for(let s of currentSocialMedias){//databasede id listede aratılır yoksa content sayfasında silinir
+        const result = socialMedias.findIndex(p=> p._id === s.id);
         if(result === -1){
-            await Skill.findByIdAndRemove(c._id);
+            await SocialMedia.findByIdAndRemove(s._id);
         }
     }
 
-    //*Ekleme, Güncelleme
-    
-    for(let s of skills){
+    for(let s of socialMedias){
         if(s._id === null){
-            const skill = new Skill();
-            skill._id = uuidv4();
-            skill.title = s.title;
-            await skill.save();
+            const socialMedia = new SocialMedia();
+            socialMedia._id = uuidv4();
+            socialMedia.name = s.name;
+            socialMedia.link = s.link;
+            await socialMedia.save();
         }
         else{
-            const skill = new Skill();
-            skill._id = s._id;
-            skill.title = s.title;
-            await Skill.findByIdAndUpdate(s._id, skill);
+            const socialMedia = new SocialMedia();
+            socialMedia._id = s._id;
+            socialMedia.name = s.name;
+            socialMedia.link = s.link;
+            await SocialMedia.findByIdAndUpdate(s._id, socialMedia);
+        }   
+    }
+
+    /* ----- Education - silme - güncelleme - ekleme ----- */
+    educations = body.educations;
+    const educationSkills = await Education.find();
+    for(let e of educationSkills){//databasede id listede aratılır yoksa content sayfasında silinir
+        const result = educations.findIndex(p=> p._id === e.id);
+        if(result === -1){
+            await Education.findByIdAndRemove(e._id);
         }
     }
 
+    for(let e of educations){
+        if(e._id === null){
+            const education = new Education();
+            education._id = uuidv4();
+            education.title = e.title;
+            education.studies = e.studies;
+            education.year = e.year;
+            await education.save();
+        }
+        else{
+            const education = new Education();
+            education._id = e._id;
+            education.title = e.title;
+            education.studies = e.studies;
+            education.year = e.year;
+            await Education.findByIdAndUpdate(e._id, education);
+        }
+    }
 
+     //*Silme
+     skills = body.skills;
+     const currentSkills = await Skill.find();
+     for(let c of currentSkills){//databasede id listede aratılır yoksa content sayfasında silinir
+         const result = skills.findIndex(p=> p._id === c.id);
+         if(result === -1){
+             await Skill.findByIdAndRemove(c._id);
+         }
+     }
+ 
+     //*Ekleme, Güncelleme
+     for(let s of skills){
+         if(s._id === null){
+             const skill = new Skill();
+             skill._id = uuidv4();
+             skill.title = s.title;
+             await skill.save();
+         }
+         else{
+             const skill = new Skill();
+             skill._id = s._id;
+             skill.title = s.title;
+             await Skill.findByIdAndUpdate(s._id, skill);
+         }
+     }
 
-    socialMedias = body.socialMedias;
-    educations = body.educations;
-    workExperiences = body.workExperiences;
+    /* ----- WorkExperience - silme - güncelleme - ekleme ----- */
+     workExperiences = body.workExperiences;
+     const currentWorkExperience = await WorkExperience.find();
+     for(let w of currentWorkExperience){
+        const result = workExperiences.findIndex(p=> p._id === w.id);
+        if(result === -1){
+            await WorkExperience.findByIdAndRemove(w._id);
+        }
+     }
+
+     for(let w of workExperiences){
+        if(w._id === null){
+            const workExperience = new WorkExperience();
+            workExperience._id = uuidv4();
+            workExperience.title = w.title;
+            workExperience.yearSubtitle = w.yearSubtitle;
+            workExperience.description = w.description;
+            await workExperience.save();
+        }
+        else{
+            const workExperience = new WorkExperience();
+            workExperience._id = w._id;
+            workExperience.title = w.title;
+            workExperience.yearSubtitle = w.yearSubtitle;
+            workExperience.description = w.description;
+            await WorkExperience.findByIdAndUpdate(w._id, workExperience);
+        }
+    }
+
+    /* ----- Certificate - silme - ekleme - güncelleme ----- */
     certificates = body.certificates;
+    const currentCertificate = await Certificate.find();
+     for(let c of currentCertificate){
+        const result = certificates.findIndex(p=> p._id === c.id);
+        if(result === -1){
+            await Certificate.findByIdAndRemove(c._id);
+        }
+     }
+
+     for(let c of certificates){
+        if(c._id === null){
+            const certificate = new Certificate();
+            certificate._id = uuidv4();
+            certificate.title = c.title;
+            certificate.description = c.description;
+            await certificate.save();
+        }
+        else{
+            const certificate = new Certificate();
+            certificate._id = c._id;
+            certificate.title = c.title;
+            certificate.description = c.description;
+            await Certificate.findByIdAndUpdate(c._id, certificate)
+        }
+    }
+
+    /* ----- Reference - silme - ekleme(pasif) - güncelleme ----- */
     references = body.references;
+    const currentReferences = await Reference.find();
+     for(let r of currentReferences){
+        const result = references.findIndex(p=> p._id === r.id);
+        if(result === -1){
+            await Reference.findByIdAndRemove(r._id);
+        }
+     }
+
+     for(let r of references){
+        if(r._id === null){
+            const reference = new Reference();
+            reference._id = uuidv4();
+            reference.subtitle = t.subtitle;
+            reference.title = r.title;
+            reference.phone = r.phone;
+            reference.email = r.email;
+            await reference.save();
+        }
+        else{
+            const reference = new Reference();
+            reference._id = r._id;
+            reference.subtitle = r.subtitle;
+            reference.title = r.title;
+            reference.phone = r.phone;
+            reference.email = r.email;
+            await Reference.findByIdAndUpdate(r._id, reference)
+        }
+    }
+
     languages = body.languages;
     interests = body.interests;
 
     res.json({message: "Update is successful"})
 })
 
-// const port = process.env.PORT || 5500;
+// const port = process.env.PORT || 5000;
 
-app.listen("5500", () => console.log("The application runs over http://localhost:5500."));
+app.listen("5000", () => console.log("The application runs over http://localhost:5000."));

@@ -49,7 +49,7 @@ function get() {
     document.getElementById("content").style.display = "none";
     document.getElementById("content-loading").style.display = "block";
     document.getElementById("error").style.display = "none";
-    axios.get("http://localhost:5500/api/get")
+    axios.get("http://localhost:5000/api/get")
         .then(res => {
             myData = res.data; //tüm veriler myData içinde saklı
             setMyInformation(myData.person)
@@ -136,7 +136,7 @@ function clear() {
 
 //myData, içindeki verileri sunucuya iletmek için kullanılır
 function save() {
-    axios.post("http://localhost:5500/api/set", myData)
+    axios.post("http://localhost:5000/api/set", myData)
         .then(res => {
             clear();
         })
@@ -203,14 +203,14 @@ function getSocialMediaEditFormDivField(socialMedia){
     
 }
 
-// function createEducationEditFormDivField() {
-//     socialMediaEditId++;
-//     const socialMedia = { id: socialMediaEditId, name: ""}; //database de değişiklik yapılacak
-//     myData.socialMedias.push(socialMedia);
-//     document.getElementById("socialmedia-div").innerHTML += getSocialMediaEditFormDivField(socialMedia);
+function createEducationEditFormDivField() {
+    socialMediaEditId++;
+    const socialMedia = {_id:null, id: socialMediaEditId, name: ""}; //database de değişiklik yapılacak
+    myData.socialMedias.push(socialMedia);
+    document.getElementById("socialmedia-div").innerHTML += getSocialMediaEditFormDivField(socialMedia);
 
-//     createSocialMediaElementForShowField(myData.socialMedias) //content sayfasına da ekler.
-// }
+    createSocialMediaElementForShowField(myData.socialMedias) //content sayfasına da ekler.
+}
 
 function removeSocialMediaForEditForm(elementId) {
     const element = document.getElementById(elementId);
@@ -317,7 +317,7 @@ function getEducationEditFormDivField(education){
 
 function createEducationEditFormDivField() {
     educationEditId++;
-    const education = { id: educationEditId, title: "", studies:"", year:""}; //database de değişiklik yapılacak
+    const education = {_id:null, id: educationEditId, title: "", studies:"", year:""}; //database de değişiklik yapılacak
     myData.educations.push(education);
     document.getElementById("education-div").innerHTML += getEducationEditFormDivField(education);
 
@@ -500,7 +500,7 @@ function getWorkExperienceEditFormDivField(workExperience){
 
 function createWorkExperienceEditFormDivField() {
     workExperienceEditId++;
-    const workExperience = { id: workExperienceEditId, title: "", yearSubtitle: "", description: ""}; //database de değişiklik yapılacak
+    const workExperience = {_id:null, id: workExperienceEditId, title: "", yearSubtitle: "", description: ""}; //database de değişiklik yapılacak
     myData.workExperiences.push(workExperience);
     document.getElementById("experience-div").innerHTML += getWorkExperienceEditFormDivField(workExperience);
 
@@ -578,7 +578,7 @@ function getCertificateEditFormDivField(certificate){
 
 function createCertificateEditFormDivField() {
     certificateEditId++;
-    const certificate = { id: certificateEditId, title: "",  description: ""}; //database de değişiklik yapılacak
+    const certificate = {_id:null, id: certificateEditId, title: "",  description: ""}; //database de değişiklik yapılacak
     myData.certificates.push(certificate);
     document.getElementById("certificate-div").innerHTML += getCertificateEditFormDivField(certificate);
 
@@ -747,7 +747,7 @@ function getLanguageEditFormUlField(language){
 
 function createLanguageEditFormDivField() {
     languageEditId++;
-    const language = { id: languageEditId, name: ""}; //database de değişiklik yapılacak
+    const language = {_id:null, id: languageEditId, name: ""}; //database de değişiklik yapılacak
     myData.languages.push(language);
     document.getElementById("ul-languages").innerHTML += getLanguageEditFormUlField(language);
 
@@ -820,7 +820,7 @@ function getInterestEditFormDivField(interest){
 
 function createInterestEditFormDivField() {
     interestEditId++;
-    const interest = { id: interestEditId, name: ""}; //database de değişiklik yapılacak
+    const interest = {_id:null, id: interestEditId, name: ""}; //database de değişiklik yapılacak
     myData.interests.push(interest);
     document.getElementById("interest-div").innerHTML += getInterestEditFormDivField(interest);
 
