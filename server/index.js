@@ -1,12 +1,27 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 
+const cors = require("cors");
+const { v4: uuidv4 } = require("uuid");
+
+//export edildi. (paylaşıma açıldı)
+const Personal = require("./models/personal");
+const SocialMedia = require("./models/socialmedia");
+const Education = require("./models/education");
+const Skill = require("./models/skill");
+const WorkExperience = require("./models/workexperience");
+const Certificate = require("./models/certificate");
+const Reference = require("./models/reference");
+const Language = require("./models/language");
+const Interest = require("./models/interest");
+
+const connect = require("./connection");
+connect(); //express gibi method olarak çağrıldı.
 
 app.use(cors());
 app.use(express.json());
 
-let person = {
+const person = {
     profileImg: "profileImg.jpg",
     name: "Gaye",
     surname: "TEKIN",
@@ -19,19 +34,16 @@ let person = {
 
 let socialMedias = [
     {
-        id:0,
         name: "@gayemce",
         link: "https://www.linkedin.com/in/gayemce/",
         icon: "bx bxl-linkedin-square social_icon"
     },
     {
-        id:1,
         name: "@gayemce",
         link: "https://github.com/gayemce",
         icon: "bx bxl-github social_icon"
     },
     {
-        id:2,
         name: "@gayemce",
         link: "https://medium.com/@gayemce",
         icon: "bx bxl-medium social_icon"
@@ -40,7 +52,6 @@ let socialMedias = [
 
 let educations = [
     {
-        id:0,
         title: "COMPUTER ENGINEERING",
         studies: "Kastamonu University",
         year: "2018-2022"
@@ -49,32 +60,26 @@ let educations = [
 
 let skills = [
     {
-        id: 0,
         title: "C#"
     },
     {
-        id:1,
         title: "CSS"
     },
     {
-        id:2,
         title: "HTML"
     },
     {
-        id:3,
         title: "Javascript"
     }
 ]
 
 let workExperiences = [ 
     {
-        id:0,
         title: "Eti Bakır A.Ş",
         yearSubtitle: "2022 | Intern Computer Engineer",
         description: "I gained experience in hardware installations and IP/TCP. I personally performed hardware installations for the company, IP telephony usage and the necessary IP assignments."
     },
     {
-        id:1,
         title: "Betelgeuse Rocket Team | Teknofest",
         yearSubtitle: "2020 -2021 | Avionic Systems Software Team Captain",
         description: "I was a founding member of the Betelgeuse Rocket team, which was established in September 2020 under the leadership of Kastamonu University Robotics Club, consisting of engineering students, and participated in the Teknofest Rocket competition."
@@ -83,12 +88,10 @@ let workExperiences = [
 
 let certificates = [
     {
-        id:0,
         title: "Programing 101: HTML",
         description: "101: HTML training program on January 22, 2023 and I was awarded this certificate."
     },
     {
-        id:1,
         title: "Programing 201: HTML5 & CSS",
         description: "201: HTML5 & CSS training program on January 22, 2023 and I was awarded this certificate."
     }
@@ -96,7 +99,6 @@ let certificates = [
 
 let references = [
     {
-        id:0,
         subtitle: "Software Trainer",
         title: "Taner Saydam",
         phone: "0541 541 5411",
@@ -106,27 +108,107 @@ let references = [
 
 let languages = [
     {
-        id:0,
         name: "Turkish"
     },
     {
-        id:1,
         name: "English"
     }
 ]
 
 let interests = [
     {
-        id:0,
         icon: "bx bx-headphone interests_icon",
         name: "Music"
     },
     {
-        id:1,
         icon: "bx bx-book-heart interests_icon",
         name: "Read"
     }
 ]
+
+//Mongodb'ye default verileri set eder.
+app.get("/api/createDefaultValue", async (req, res)=> {
+    let PersonalModel = await Personal.findOne();
+    if(PersonalModel === null){
+        PersonalModel = new Personal(person) //default verileri mongodb'ye atar.
+        await PersonalModel.save();
+    }
+
+    for(let s of socialMedias){
+        let socialMedia = await SocialMedia.findOne({link: s.link});
+        if(socialMedia === null){
+            socialMedia = new SocialMedia(s);
+            socialMedia.id = uuidv4();
+            await socialMedia.save();
+        }
+    }
+
+    for(let e of educations){
+        let education = await Education.findOne({title: e.title});
+        if(education === null){
+            education = new Education(e);
+            education.id = uuidv4();
+            await education.save();
+        }
+    }
+
+    //kontrol ederek eklenmeyenleri set eder.
+    for(let s of skills){
+        let skill = await Skill.findOne({title: s.title});
+        if(skill === null){
+            skill = new Skill(s);
+            skill._id = uuidv4();
+            await skill.save();
+        }
+    }
+
+    for(let w of workExperiences){
+        let workExperience = await WorkExperience.findOne({title: w.title, yearSubtitle: w.yearSubtitle});
+        if(workExperience === null){
+            workExperience = new WorkExperience(w);
+            workExperience.id = uuidv4();
+            await workExperience.save();
+        }
+    }
+
+    for(let c of certificates){
+        let certificate = await Certificate.findOne({title: c.title});
+        if(certificate === null){
+            certificate = new Certificate(c);
+            certificate.id = uuidv4();
+            await certificate.save();
+        }
+    }
+
+    for(let r of references){
+        let reference = await Reference.findOne({title: r.title});
+        if(reference === null){
+            reference = new Reference(r);
+            reference.id = uuidv4();
+            await reference.save();
+        }
+    }
+
+    for(let l of languages){
+        let language = await Language.findOne({name: l.name});
+        if(language === null){
+            language = new Language(l);
+            language.id = uuidv4();
+            await language.save();
+        }
+    }
+
+    for(let i of interests){
+        let interest = await Interest.findOne({name: i.name});
+        if(interest === null){
+            interest = new Interest(i);
+            interest.id = uuidv4();
+            await interest.save();
+        }
+    }
+
+    res.json({message: "Create default value is succesful"});
+})
 
 app.get("", (req,res) => {
     res.json({message: "API is working"});
@@ -162,5 +244,6 @@ app.post("/api/set", (req,res) => {
     res.json({message: "Update is successful"})
 })
 
+// const port = process.env.PORT || 5500;
 
-app.listen(5500, () => console.log("The application runs over http://localhost:5500."));
+app.listen("5500", () => console.log("The application runs over http://localhost:5500."));
