@@ -21,7 +21,7 @@ connect(); //express gibi method olarak çağrıldı.
 app.use(cors());
 app.use(express.json());
 
-const person = {
+let person = {
     profileImg: "profileImg.jpg",
     name: "Gaye",
     surname: "TEKIN",
@@ -131,11 +131,12 @@ app.get("/api/createDefaultValue", async (req, res)=> {
     let PersonalModel = await Personal.findOne();
     if(PersonalModel === null){
         PersonalModel = new Personal(person) //default verileri mongodb'ye atar.
+        PersonalModel._id = uuidv4();
         await PersonalModel.save();
     }
 
     for(let s of socialMedias){
-        let socialMedia = await SocialMedia.findOne({link: s.link});
+        let socialMedia = await SocialMedia.findOne({name: s.name, link: s.link});
         if(socialMedia === null){
             socialMedia = new SocialMedia(s);
             socialMedia.id = uuidv4();
@@ -214,25 +215,61 @@ app.get("", (req,res) => {
     res.json({message: "API is working"});
 })
 
-app.get("/api/get", (req,res) => {
+//Tüm veriler databaseden gelir.
+app.get("/api/get", async (req,res) => {
     const myInformation = {
-        person: person,
-        skills: skills,
-        socialMedias: socialMedias,
-        educations: educations,
-        workExperiences: workExperiences,
-        certificates: certificates,
-        references: references,
-        languages: languages,
-        interests: interests
+        person: await Personal.findOne(),
+        skills: await Skill.find(),
+        socialMedias: await SocialMedia.find(),
+        educations: await Education.find(),
+        workExperiences: await WorkExperience.find(),
+        certificates: await Certificate.find(),
+        references: await Reference.find(),
+        languages: await Language.find(),
+        interests: await Interest.find()
     }
     res.json(myInformation);
 });
 
-app.post("/api/set", (req,res) => {
+//Edit sayfasında değiştirilen veriler servera, sonra da database gönderilir ve kullanıcıya yansır.
+app.post("/api/set", async(req,res) => {
     const body = req.body;
-    person = body.person;
+    // person = body.person; //*Person Update
+    person = await Personal.findOne(); //kaydı bulur.
+    const newPerson = new Personal(body.person); //güncelleme işlemini yapar.
+    newPerson._id = person._id;
+    await Personal.findByIdAndUpdate(person._id, newPerson); //Id'ye göre kaydı bulur ve günceller.
+
+    //*Silme
     skills = body.skills;
+
+    const currentSkills = await Skill.find();
+    for(let c of currentSkills){//databasede id listede aratılır yoksa content sayfasında silinir
+        const result = skills.findIndex(p=> p._id === c.id);
+        if(result === -1){
+            await Skill.findByIdAndRemove(c._id);
+        }
+    }
+
+    //*Ekleme, Güncelleme
+    
+    for(let s of skills){
+        if(s._id === null){
+            const skill = new Skill();
+            skill._id = uuidv4();
+            skill.title = s.title;
+            await skill.save();
+        }
+        else{
+            const skill = new Skill();
+            skill._id = s._id;
+            skill.title = s.title;
+            await Skill.findByIdAndUpdate(s._id, skill);
+        }
+    }
+
+
+
     socialMedias = body.socialMedias;
     educations = body.educations;
     workExperiences = body.workExperiences;
