@@ -392,7 +392,7 @@ app.post("/api/set", async(req,res) => {
         if(r._id === null){
             const reference = new Reference();
             reference._id = uuidv4();
-            reference.subtitle = t.subtitle;
+            reference.subtitle = r.subtitle;
             reference.title = r.title;
             reference.phone = r.phone;
             reference.email = r.email;
@@ -409,8 +409,56 @@ app.post("/api/set", async(req,res) => {
         }
     }
 
+    /* ----- Language - silme - ekleme - güncelleme ----- */
     languages = body.languages;
+    const currentLanguages = await Language.find();
+     for(let l of currentLanguages){
+        const result = languages.findIndex(p=> p._id === l.id);
+        if(result === -1){
+            await Language.findByIdAndRemove(l._id);
+        }
+     }
+
+     for(let l of languages){
+        if(l._id === null){
+            const language = new Language();
+            language._id = uuidv4();
+            language.name = l.name;
+            await language.save();
+        }
+        else{
+            const language = new Language();
+            language._id = l._id;
+            language.name = l.name;
+            await Language.findByIdAndUpdate(l._id, language)
+        }
+    }
+
+    /* ----- Interest - silme - ekleme - güncelleme ----- */
     interests = body.interests;
+    const currentInterest = await Interest.find();
+    for(let i of currentInterest){
+        const result = interests.findIndex(p=> p._id === i.id);
+        if(result === -1){
+            await Interest.findByIdAndRemove(i._id);
+        }
+    }
+
+    for(let i of interests){
+        if(i._id === null){
+            const interest = new Interest();
+            interest._id = uuidv4();
+            interest.name = i.name;
+            await interest.save();
+        }
+        else{
+            const interest = new Interest();
+            interest._id = i._id;
+            interest.name = i.name;
+            await Interest.findByIdAndUpdate(i._id, interest)
+        }
+    }
+
 
     res.json({message: "Update is successful"})
 })
