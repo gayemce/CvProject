@@ -58,9 +58,9 @@ function get() {
             setMyEducations(myData.educations)
             setMyWorkExperiences(myData.workExperiences)
             setMyCertificates(myData.certificates)
-            setMyReferences(myData.references)
+            // setMyReferences(myData.references)
             setMyLanguages(myData.languages)
-            setMyInterests(myData.interests)
+            // setMyInterests(myData.interests)
 
             document.getElementById("content").style.display = "block";
             document.getElementById("content-loading").style.display = "none";

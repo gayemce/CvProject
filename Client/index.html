@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
 
     <title>My Resume</title>
 </head>
+
 <body>
 
     <div id="edit-form" class="edit-form">
@@ -20,81 +22,90 @@
                     <section class="home">
                         <div class="home_container section bd-grid">
                             <div class="home_data bd-grid">
-                                <img src="#" alt="" class="home_img">
+                                <!-- <img src="#" alt="" class="home_img"> -->
                                 <!-- <span>
                                     <label for="input-image">İmage:</label><br>
                                     <input type="file" id="input-image" style="width: 150px;"><br>
                                 </span> -->
-    
+
                                 <h1 class="home_title"></h1>
-                                    <span>
-                                        <label for="input-name">First name:</label><br>
-                                        <input onkeyup="keyupInputandSetValue('name',event)" type="text" id="input-name" style="width: 150px;"><br> 
-                                        <b> 
-                                            <label for="input-surname">Last name:</label><br>
-                                            <input onkeyup="keyupInputandSetValue('surname',event)" type="text" id="input-surname" style="width: 150px;"><br><br>
-                                        </b>
-                                    </span>
+                                <span>
+                                    <label for="input-name">First name:</label><br>
+                                    <input onkeyup="keyupInputandSetValue('name',event)" type="text" id="input-name"
+                                        style="width: 150px;"><br>
+                                    <b>
+                                        <label for="input-surname">Last name:</label><br>
+                                        <input onkeyup="keyupInputandSetValue('surname',event)" type="text"
+                                            id="input-surname" style="width: 150px;"><br><br>
+                                    </b>
+                                </span>
                                 <h3 class="home_profession">
                                     <label for="input-profession">Your profession:</label><br>
-                                    <input onkeyup="keyupInputandSetValue('profession',event)" type="text" id="input-profession" style="width: 150px;"><br>
+                                    <input onkeyup="keyupInputandSetValue('profession',event)" type="text"
+                                        id="input-profession" style="width: 150px;"><br>
                                 </h3>
                             </div>
-    
+
                             <div class="home_address bd-grid">
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-map home_icon'></i>
                                         <label for="input-address">:</label>
-                                        <input onkeyup="keyupInputandSetValue('address',event)" type="text" id="input-address" style="width: 150px;"><br>
+                                        <input onkeyup="keyupInputandSetValue('address',event)" type="text"
+                                            id="input-address" style="width: 150px;"><br>
                                     </span>
                                 </span>
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-envelope home_icon'></i>
                                         <label for="input-email">:</label>
-                                        <input onkeyup="keyupInputandSetValue('email',event)" type="email" id="input-email" style="width: 150px;"><br>
+                                        <input onkeyup="keyupInputandSetValue('email',event)" type="email"
+                                            id="input-email" style="width: 150px;"><br>
                                     </span>
                                 </span>
                                 <span class="home_information">
                                     <span>
                                         <i class='bx bx-phone home_icon'></i>
                                         <label for="input-phone">:</label>
-                                        <input onkeyup="keyupInputandSetValue('phone',event)" type="tel" id="input-phone" style="width: 150px;"><br>
+                                        <input onkeyup="keyupInputandSetValue('phone',event)" type="tel"
+                                            id="input-phone" style="width: 150px;"><br>
                                     </span>
                                 </span>
                             </div>
                         </div>
-                    </section> 
-    
-                    <i onclick="save()" class='bx bx-save button-save'></i>
-                    <i onclick="hideEditForm()" class='bx bx-plus bx-rotate-135 button-cancel'></i>
-                    
+
+                        <!-- Button Save -->
+                        <i onclick="save()" class='bx bx-save button-save'></i>
+
+                    </section>
+
                     <!--========== SOCIAL ==========-->
                     <section class="social section">
                         <h2 class="section-title">SOCIAL</h2>
-    
+
                         <div id="socialmedia-div" class="social_container bd-grid">
-                            
+
                         </div>
                     </section>
-    
+
                     <!--========== PROFILE ==========-->
                     <section class="profile section">
                         <h2 class="section-title">Profile</h2>
-    
+
                         <p class="profile_description">
-                            <label for="input-profile">Your Profile:</label></p>
-                            <textarea onkeyup="keyupInputandSetValue('myProfile',event)" id="input-profile" rows="10" cols="25"></textarea>
-                            <br>
+                            <label for="input-profile">Your Profile:</label>
+                        </p>
+                        <textarea onkeyup="keyupInputandSetValue('myProfile',event)" id="input-profile" rows="10"
+                            cols="25"></textarea>
+                        <br>
                         </p>
                     </section>
-                    
+
                     <!--========== EDUCATION ==========-->
                     <section class="education section">
                         <h2 class="section-title">Education
                             <i onclick="createEducationEditFormDivField()" class='bx bx-plus button-Add'></i>
-                        </h2>    
+                        </h2>
                         <div id="education-div" class="education_container bd-grid">
                             <div class="education_content">
                                 <div class="education_time">
@@ -102,13 +113,12 @@
                                     <span class="education_line"></span>
                                 </div>
 
-                                
+
                             </div>
-    
+
                         </div>
                     </section>
-    
-    
+
                     <!--========== SKILLS  ==========-->
                     <section class="skills section">
                         <h2 class="section-title">Skills
@@ -116,67 +126,69 @@
                         </h2>
                         <div class="skills_content bd-grid">
                             <ul id="ul-skills" class="skills_data">
-                                                                                                
+
                             </ul>
                         </div>
                     </section>
-    
+
                 </div>
-    
+
                 <div class="resume_right">
                     <!--========== EXPERIENCE ==========-->
                     <section class="experience section">
                         <h2 class="section-title">Experience
-                           <i onclick="createWorkExperienceEditFormDivField()" class='bx bx-plus button-Add'></i>
+                            <i onclick="createWorkExperienceEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
-    
+
                         <div id="experience-div" class="experience_container bd-grid">
                             <div class="experience_content">
                                 <div class="experience_time">
                                     <span class="experience_rounder"></span>
                                     <span class="experience_line"></span>
                                 </div>
-      
                             </div>
                         </div>
+
+                        <!-- Button Cancel -->
+                        <i onclick="hideEditForm()" class='bx bx-plus bx-rotate-135 button-cancel'></i>
+
                     </section>
-    
+
                     <!--========== CERTIFICATES ==========-->
                     <br>
                     <section class="certificate section">
                         <h2 class="section-title">Certificates
                             <i onclick="createCertificateEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
-                        
+
                         <div id="certificate-div" class="certificate_container bd-grid">
-                            
+
                         </div>
                     </section>
-    
+
                     <!--========== REFERENCES ==========-->
-                    <section class="references section">
+                    <!-- <section class="references section">
                         <h2 class="section-title">References
-                            <!-- <i onclick="createReferenceEditFormDivField()" class='bx bx-plus button-Add'></i> -->
                         </h2>
     
                         <div id="reference-div" class="bd-grid">
                             
                         </div>
-                    </section>
-    
+                    </section> -->
+
                     <!--========== LANGUAGES ==========-->
                     <section class="languages section">
                         <h2 class="section-title">Languages
                             <i onclick="createLanguageEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
-    
+
                         <div id="ul-languages" class="languages_container">
-                           
+
                         </div>
                     </section>
-                    
+
                     <!--========== INTERESTS ==========-->
-                    <section class="interests section">
+                    <!-- <section class="interests section">
                         <h2 class="section-title">Interests
                             <i onclick="createInterestEditFormDivField()" class='bx bx-plus button-Add'></i>
                         </h2>
@@ -184,9 +196,9 @@
                         <div id="interest-div">
                             
                         </div>
-                    </section>
+                    </section> -->
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 
@@ -199,16 +211,17 @@
                     <div class="home_container section bd-grid">
                         <div class="home_data bd-grid">
                             <img id="profileImg" src="" alt="" class="home_img">
-                            
+
                             <h1 class="home_title">
-                            <span id="name"></span> 
-                            <span><b id="surname"></b></span></h1>
+                                <span id="name"></span>
+                                <span><b id="surname"></b></span>
+                            </h1>
                             <h3 id="profession" class="home_profession"></h3>
                         </div>
 
                         <div class="home_address bd-grid">
                             <span class="home_information">
-                                <i class='bx bx-map home_icon'></i> 
+                                <i class='bx bx-map home_icon'></i>
                                 <span id="address"></span>
                             </span>
                             <span class="home_information">
@@ -221,19 +234,18 @@
                             </span>
                         </div>
                     </div>
-                </section> 
 
-                <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
+                    <!-- Button to generate and download the pdf. Available for desktop. -->
+                    <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
 
-                <!-- Button to generate and download the pdf. Available for desktop. -->
-                <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
-                
+                </section>
+
                 <!--========== SOCIAL ==========-->
                 <section class="social section">
                     <h2 class="section-title">SOCIAL</h2>
 
                     <div id="mySocialMedias" class="social_container bd-grid">
-                        
+
                     </div>
                 </section>
 
@@ -243,7 +255,7 @@
 
                     <span id="myProfile" class="profile_description"></span>
                 </section>
-                
+
                 <!--========== EDUCATION ==========-->
                 <section class="education section" id="education">
                     <h2 class="section-title">Education</h2>
@@ -255,21 +267,9 @@
                                 <span class="education_line"></span>
                             </div>
                         </div>
-                       
+
                     </div>
                 </section>
-
-                <!--========== SKILLS  ==========-->
-                <section class="skills section" id="skills">
-                    <h2 class="section-title">Skills</h2>
-
-                    <div class="skills_content bd-grid">
-                        <ul id="mySkills" class="skills_data">
-                            
-                        </ul>
-                    </div>
-                </section>
-
             </div>
 
             <div class="resume_right">
@@ -285,6 +285,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- edit button -->
+                    <i onclick="showEditForm()" class='bx bx-edit button-edit' id="button-edit"></i>
+
                 </section>
 
 
@@ -294,16 +298,27 @@
                     <h2 class="section-title">Certificates</h2>
 
                     <div id="myCertificates" class="certificate_container bd-grid">
-                        
+
                     </div>
                 </section>
 
                 <!--========== REFERENCES ==========-->
-                <section class="references section" id="references">
+                <!-- <section class="references section" id="references">
                     <h2 class="section-title">References</h2>
 
                     <div id="myReferences" class="references_container bd-grid">
                         
+                    </div>
+                </section> -->
+
+                <!--========== SKILLS  ==========-->
+                <section class="skills section" id="skills">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills_content bd-grid">
+                        <ul id="mySkills" class="skills_data">
+
+                        </ul>
                     </div>
                 </section>
 
@@ -313,21 +328,21 @@
 
                     <div class="languages_container">
                         <ul id="myLanguages" class="languages_content bd-grid">
-                            
+
                         </ul>
                     </div>
                 </section>
-                
+
                 <!--========== INTERESTS ==========-->
-                <section class="interests section">
+                <!-- <section class="interests section">
                     <h2 class="section-title">Interests</h2>
 
                     <div id="myInterests" class="interests_container bd-grid">
                         
                     </div>
-                </section>
+                </section> -->
             </div>
-        </div>        
+        </div>
     </main>
 
     <main id="content-loading" class="l-main bd-container" style="display: none;">
@@ -337,34 +352,39 @@
                 <section class="home">
                     <div class="home_container section bd-grid">
                         <div class="home_data bd-grid">
-                            <img class="home_img" style="width: 170px; height: 170px; background-color: gainsboro;  border-radius: 50%;">
-                            <h1 class="home_title" style="width: 150px; height: 40px; background-color: gainsboro; margin-left: 40px; border-radius: 10px;"></h1>
-                            <h3 class="home_profession" style="width: 200px; height: 35px; background-color: gainsboro; margin-left: 14px; border-radius: 10px;"></h3>
+                            <img class="home_img"
+                                style="width: 170px; height: 170px; background-color: gainsboro;  border-radius: 50%;">
+                            <h1 class="home_title"
+                                style="width: 150px; height: 40px; background-color: gainsboro; margin-left: 40px; border-radius: 10px;">
+                            </h1>
+                            <h3 class="home_profession"
+                                style="width: 200px; height: 35px; background-color: gainsboro; margin-left: 14px; border-radius: 10px;">
+                            </h3>
                         </div>
                         <div class="home_address bd-grid">
                             <span class="home_information">
-                                <i class='bx bx-map home_icon'></i> 
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
+                                <i class='bx bx-map home_icon'></i>
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
                             </span>
                             <span class="home_information">
                                 <i class='bx bx-envelope home_icon'></i>
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
                             </span>
                             <span class="home_information">
                                 <i class='bx bx-phone home_icon'></i>
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; margin-left: 5px; border-radius: 10px;"></span>
                             </span>
                         </div>
                     </div>
-                </section> 
+                </section>
 
-                <!-- Button to generate and download the pdf. Available for desktop. -->
-                <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
-
-                
                 <!--========== SOCIAL ==========-->
                 <section class="social section">
-                    <h2 class="section-title" style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+                    <h2 class="section-title"
+                        style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
                     <div class="social_container bd-grid">
                         <p style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></p>
@@ -375,16 +395,18 @@
 
                 <!--========== PROFILE ==========-->
                 <section class="profile section">
-                    <h2 class="section-title" style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+                    <h2 class="section-title"
+                        style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
                     <span class="profile_description">
                         <p style="width: 230px; height: 150px; background-color: gainsboro; border-radius: 10px;"></p>
                     </span>
                 </section>
-                
+
                 <!--========== EDUCATION ==========-->
                 <section class="education section">
-                    <h2 class="section-title" style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+                    <h2 class="section-title"
+                        style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
                     <div class="education_container bd-grid">
                         <div class="education_content">
@@ -393,43 +415,24 @@
                                 <span class="education_line"></span>
                             </div>
                             <div class="education_data bd-grid">
-                                <h3 class="education_title" style="width: 200px; height: 25px; background-color: gainsboro; border-radius: 10px;"></h3>
-                                <span class="education_studies" style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
-                                <span class="education_year" style="width: 100px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                                <h3 class="education_title"
+                                    style="width: 200px; height: 25px; background-color: gainsboro; border-radius: 10px;">
+                                </h3>
+                                <span class="education_studies"
+                                    style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                                <span class="education_year"
+                                    style="width: 100px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
                             </div>
                         </div>
                     </div>
                 </section>
-
-
-                <!--========== SKILLS  ==========-->
-                <section class="skills section">
-                    <h2 class="section-title" style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
-
-                    <div class="skills_content bd-grid">
-                        <ul class="skills_data" >
-                            <li class="skills_name" >
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span> 
-                            </li>
-                            <li class="skills_name" >
-                                <span  style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span> 
-                            </li>
-                            <li class="skills_name" >
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span> 
-                            </li>
-                            <li class="skills_name" >
-                                <span style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span> 
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
             </div>
 
             <div class="resume_right">
                 <!--========== EXPERIENCE ==========-->
                 <section class="experience section">
-                    <h2 class="section-title" style="width: 200px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+                    <h2 class="section-title"
+                        style="width: 200px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
                     <div class="experience_container bd-grid">
                         <div class="experience_content">
                             <div class="experience_time">
@@ -437,9 +440,14 @@
                                 <span class="experience_line"></span>
                             </div>
                             <div class="experience_data bd-grid">
-                                <h3 class="experience_title" style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;"></h3>
-                                <span class="experience_company" class="education_studies" style="width: 300px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
-                                <p class="experience_description" style="width: 500px; height: 120px; background-color: gainsboro; border-radius: 10px;"></p>
+                                <h3 class="experience_title"
+                                    style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;">
+                                </h3>
+                                <span class="experience_company" class="education_studies"
+                                    style="width: 300px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                                <p class="experience_description"
+                                    style="width: 500px; height: 120px; background-color: gainsboro; border-radius: 10px;">
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -450,9 +458,14 @@
                                 <span class="experience_line"></span>
                             </div>
                             <div class="experience_data bd-grid">
-                                <h3 class="experience_title" style="width: 180px; height: 30px; background-color: gainsboro; margin-top: 30px;  border-radius: 10px;"></h3>
-                                <span class="experience_company" class="education_studies" style="width: 300px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
-                                <p class="experience_description" style="width: 500px; height: 120px; background-color: gainsboro; border-radius: 10px;"></p>
+                                <h3 class="experience_title"
+                                    style="width: 180px; height: 30px; background-color: gainsboro; margin-top: 30px;  border-radius: 10px;">
+                                </h3>
+                                <span class="experience_company" class="education_studies"
+                                    style="width: 300px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                                <p class="experience_description"
+                                    style="width: 500px; height: 120px; background-color: gainsboro; border-radius: 10px;">
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -460,22 +473,32 @@
 
                 <!--========== CERTIFICATES ==========-->
                 <section class="certificate section">
-                    <h2 class="section-title" style="width: 250px; height: 40px; background-color: gainsboro; margin-top: 50px; border-radius: 10px;"></h2>
+                    <h2 class="section-title"
+                        style="width: 250px; height: 40px; background-color: gainsboro; margin-top: 50px; border-radius: 10px;">
+                    </h2>
 
                     <div class="certificate_container bd-grid">
                         <div class="certificate_content">
-                            <h3 class="cerficate_title" style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;"></h3>
-                            <p class="certificate_description" style="width: 500px; height: 50px; background-color: gainsboro; margin-top: 5px; border-radius: 10px;"></p>
+                            <h3 class="cerficate_title"
+                                style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;">
+                            </h3>
+                            <p class="certificate_description"
+                                style="width: 500px; height: 50px; background-color: gainsboro; margin-top: 5px; border-radius: 10px;">
+                            </p>
                         </div>
                         <div class="certificate_content">
-                            <h3 class="cerficate_title" style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;"></h3>
-                            <p class="certificate_description" style="width: 500px; height: 50px; background-color: gainsboro; margin-top: 5px; border-radius: 10px;"></p>
+                            <h3 class="cerficate_title"
+                                style="width: 180px; height: 30px; background-color: gainsboro; border-radius: 10px;">
+                            </h3>
+                            <p class="certificate_description"
+                                style="width: 500px; height: 50px; background-color: gainsboro; margin-top: 5px; border-radius: 10px;">
+                            </p>
                         </div>
                     </div>
                 </section>
 
                 <!--========== REFERENCES ==========-->
-                <section class="references section">
+                <!-- <section class="references section">
                     <h2 class="section-title" style="width: 250px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
                     <div class="references_container bd-grid">
@@ -497,26 +520,56 @@
                         </div>
                         
                     </div>
-                </section>
+                </section> -->
 
-                <!--========== LANGUAGES ==========-->
-                <section class="languages section">
-                    <h2 class="section-title" style="width: 250px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+                <!--========== SKILLS  ==========-->
+                <section class="skills section">
+                    <h2 class="section-title"
+                        style="width: 180px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
-                    <div class="languages_container">
-                        <ul class="languages_content bd-grid">
-                            <li class="languages_name">
-                                <span class="languages_circle" style="width: 120px; height: 20px; background-color: gainsboro; border-radius: 10px;"></span>
+                    <div class="skills_content bd-grid">
+                        <ul class="skills_data">
+                            <li class="skills_name">
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
                             </li>
-                            <li class="languages_name">
-                                <span class="languages_circle" style="width: 120px; height: 20px; background-color: gainsboro; border-radius: 10px;"></span>
+                            <li class="skills_name">
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                            </li>
+                            <li class="skills_name">
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
+                            </li>
+                            <li class="skills_name">
+                                <span
+                                    style="width: 140px; height: 25px; background-color: gainsboro; border-radius: 10px;"></span>
                             </li>
                         </ul>
                     </div>
                 </section>
-                
+
+                <!--========== LANGUAGES ==========-->
+                <section class="languages section">
+                    <h2 class="section-title"
+                        style="width: 250px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
+
+                    <div class="languages_container">
+                        <ul class="languages_content bd-grid">
+                            <li class="languages_name">
+                                <span class="languages_circle"
+                                    style="width: 120px; height: 20px; background-color: gainsboro; border-radius: 10px;"></span>
+                            </li>
+                            <li class="languages_name">
+                                <span class="languages_circle"
+                                    style="width: 120px; height: 20px; background-color: gainsboro; border-radius: 10px;"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
                 <!--========== INTERESTS ==========-->
-                <section class="interests section">
+                <!-- <section class="interests section">
                     <h2 class="section-title" style="width: 250px; height: 40px; background-color: gainsboro; border-radius: 10px;"></h2>
 
                     <div class="interests_container bd-grid">
@@ -541,9 +594,9 @@
                             </span>
                         </div>
                     </div>
-                </section>
+                </section> -->
             </div>
-        </div>        
+        </div>
     </main>
 
     <div class="d-flex" id="error" style="display: none;">
@@ -553,7 +606,7 @@
 
     <!-- HTML2PDF -->
     <script src="raw.githubusercontent.com_eKoopmans_html2pdf.js_master_dist_html2pdf.bundle.min.js"></script>
-    
+
 
     <!-- AXIOS cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
@@ -561,4 +614,5 @@
     <!-- script js -->
     <script src="script.js"></script>
 </body>
+
 </html>

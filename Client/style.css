@@ -1,10 +1,22 @@
 /* googe fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+/*Download, edit butonu sabitlenecek Responsive yapıda gizlenecek (YAPILDI)*/
+/*Mail iconu ve yazısı düzeltilecek (YAPILDI)*/
+/*References bölümü kaldırılacak (YAPILDI)*/
+/*Skils bölümü sağa alınacak (YAPILDI)*/
+/*Interests bölümü kaldırılacak (YAPILDI)*/
+/*Save, cancel butonu sabitlenecek (YAPILDI)*/
+/*Cancel butonunda responsive bağlı sabitlenmeme sorunu var veya relative alamıyor (YAPILDI)*/
+/*Edit form Sayfası farklı bir şekilde tasarlanacak (gerek duyulmadı)*/
+/*Edit görsel kısmı kaldırılacak, sadece bize ait bir cv tasarımı olacak (YAPILDI)*/
+/*Edit form Sayfası için responsive yapı yapılacak (YAPILDI)*/
+
+
 /*===== VARIABLES CSS =====*/
 :root {
     --header-height: 3rem;
-    
+
     /*========== Colors ==========*/
     --title-color: #0B0A0A;
     --text-color: #403A3A;
@@ -12,8 +24,7 @@
     --container-color: #FAFAFA;
     --container-color-alt: #F0EFEF;
     --body-color: #FCFCFC;
-    --header-color: #e6e2e2;
-  
+
     /*========== Font and typography ==========*/
     --body-font: 'Poppins', sans-serif;
     --h1-font-size: 1.5rem;
@@ -22,26 +33,28 @@
     --normal-font-size: .938rem;
     --small-font-size: .875rem;
     --smaller-font-size: .813rem;
-  
+
     /*========== Font weight ==========*/
     --font-medium: 500;
     --font-semi-bold: 600;
-  
+
     /*========== Margins ==========*/
     --mb-1: .5rem;
     --mb-2: 1rem;
     --mb-3: 1.5rem;
-  
+
     /*========== z index ==========*/
     --z-tooltip: 10;
     --z-fixed: 100;
 
     /*========== width ==========*/
     --width: 50%;
-  }
+}
 
 /*========== BASE ==========*/
-*,::before,::after{
+*,
+::before,
+::after {
     box-sizing: border-box;
 }
 
@@ -50,7 +63,7 @@
 } */
 
 /*========== Font size variables to scale cv ==========*/
-body.scale-cv{
+body.scale-cv {
     --h1-font-size: .938rem;
     --h2-font-size: .938rem;
     --h3-font-size: .875rem;
@@ -60,7 +73,7 @@ body.scale-cv{
 }
 
 /*========== display flex ==========*/
-.d-flex{
+.d-flex {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -68,170 +81,175 @@ body.scale-cv{
     height: 85vh;
 }
 
-.button-Add{
+.button-Add {
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
 }
 
-.button-delete{
+.button-delete {
     font-family: var(--body-font);
     font-size: 0.8rem;
     margin-top: 5px;
 }
 
 /*========== save button ==========*/
-.button-save{
-    position: relative;
-    left: 35rem;
-    bottom: 34.5rem;
-    font-size: 1.2rem;
+.button-save {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 2.2rem;
+    /* display: flex; */
     color: var(--text-color);
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
-.button-save:hover{
+.button-save:hover {
     color: var(--title-color);
 }
 
 /*========== cancel button ==========*/
-.button-cancel{
-    position: relative;
-    left: 35rem;
-    bottom: 34.3rem;
-    font-size: 1.6rem;
+.button-cancel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 2.2rem;
+    /* display: flex; */
     color: var(--text-color);
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
-.bx-rotate-135{
+.bx-rotate-135 {
     transform: rotate(135deg);
 }
 
-.button-cancel:hover{
+.button-cancel:hover {
     color: var(--title-color);
 }
 
-/*========== Edit button ==========*/
-.button-edit{
+/* --- edit button --- */
+.button-edit {
     display: none;
-    position: relative;
-    left: 54rem;
-    bottom: 26.5rem;
-    color: var(--text-color);
+    position: absolute;
+    top: 2.2rem;
+    right: 0;
+    /* display: flex; */
     font-size: 1.2rem;
+    color: var(--text-color);
     cursor: pointer;
 }
 
-.button-edit:hover{
+.button-edit:hover {
     color: var(--title-color);
 }
 
 /*========== Generate PDF button ==========*/
-.generate-pdf{
+.generate-pdf {
     display: none;
-    position: relative;
-    right: 1rem;
-    bottom: 26.5rem;
+    position: absolute;
+    top: 2.2rem;
+    left: 0;
     font-size: 1.2rem;
     color: var(--text-color);
     cursor: pointer;
 }
 
-.generate-pdf:hover{
+.generate-pdf:hover {
     color: var(--title-color);
 }
 
 
 /*======== Classes modified to reduce size and print on A4 sheet ========*/
-.scale-cv .generate-pdf{
+.scale-cv .generate-pdf {
     display: none;
 }
 
-.scale-cv .button-edit{
+.scale-cv .button-edit {
     display: none;
 }
 
-.scale-cv .bd-container{
+.scale-cv .bd-container {
     max-width: 595px;
 }
 
-.scale-cv .section{
+.scale-cv .section {
     padding: 1.5rem 0 .80rem;
 }
 
-.scale-cv .section-title{
+.scale-cv .section-title {
     margin-bottom: 0.75rem;
 }
 
 .scale-cv .resume_left,
-.scale-cv .resume_right{
+.scale-cv .resume_right {
     padding: 0 2rem;
 }
 
-.scale-cv .home_img{
+.scale-cv .home_img {
     width: 130px;
     height: 130px;
 }
 
-.scale-cv .home_container{
+.scale-cv .home_container {
     gap: 1.5rem;
 }
 
-.scale-cv .home_data{
+.scale-cv .home_data {
     gap: .25rem;
 }
 
 .scale-cv .home_address,
-.scale-cv .social_container{
+.scale-cv .social_container {
     gap: .75rem;
 }
 
 .scale-cv .home_icon,
 .scale-cv .social_icon,
-.scale-cv .interests_icon{
+.scale-cv .interests_icon {
     font-size: 1rem;
 }
 
 .scale-cv .education_container,
 .scale-cv .experience_container,
-.scale-cv .certificate_container{
+.scale-cv .certificate_container {
     gap: 1rem;
 }
 
 .scale-cv .education_time,
-.scale-cv .experience_time{
+.scale-cv .experience_time {
     padding-right: .5rem;
 }
 
 .scale-cv .education_rounder,
-.scale-cv .experience_rounder{
+.scale-cv .experience_rounder {
     width: 11px;
     height: 11px;
     margin-top: .22rem;
 }
 
 .scale-cv .education_line,
-.scale-cv .experience_line{
+.scale-cv .experience_line {
     width: 1px;
     height: 110%;
     transform: translate(5px, 0);
 }
 
 .scale-cv .education_data,
-.scale-cv .experience_data{
+.scale-cv .experience_data {
     gap: .25rem;
 }
 
-.scale-cv .skills_name{
+.scale-cv .skills_name {
     margin-bottom: var(--mb-1);
 }
 
-.scale-cv .interests_container{
+.scale-cv .interests_container {
     column-gap: 2.5rem;
 }
 
-body{
+body {
     margin: 0 0 var(--header-height) 0;
     padding: 0;
     font-family: var(--body-font);
@@ -240,35 +258,41 @@ body{
     color: var(--text-color);
 }
 
-h1,h2,h3,ul,p{
+h1,
+h2,
+h3,
+ul,
+p {
     margin: 0;
 }
 
-h1,h2,h3{
+h1,
+h2,
+h3 {
     color: var(--title-color);
     font-weight: var(--font-medium);
 }
 
-ul{
+ul {
     padding: 0;
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-img{
+img {
     max-width: 100%;
     height: auto;
 }
 
 /*========== CLASS CSS ==========*/
-.section{
+.section {
     padding: 1.5rem 0;
 }
 
-.section-title{
+.section-title {
     font-size: var(--h2-font-size);
     color: var(--title-color);
     font-weight: var(--font-semi-bold);
@@ -279,101 +303,111 @@ img{
 }
 
 /*========== LAYOUT ==========*/
-.bd-container{
+.bd-container {
     max-width: 968px;
-    width: calc(100% - 2rem);
+    width: calc(100% - 3rem);
+    /*? 2rem 3rem yapıldı */
     margin-left: var(--mb-3);
     margin-right: var(--mb-3);
 }
 
-.bd-grid{
+.bd-grid {
     display: grid;
-    gap: .5rem;
+    gap: 1.5rem;
+    /*? .5rem 1.5rem yapıldı */
 }
 
 
 /*========== HOME ==========*/
-/* .home{
+.home {
     position: relative;
-} */
+}
 
-.home_container{
+.home_container {
     gap: 3rem;
 }
 
-.home_data{
+.home_data {
     gap: .5rem;
     text-align: center;
 }
 
-.home_img{
+.home_img {
     width: 170px;
+    /*normalde 120px*/
     height: 170px;
+    /*normalde 120px*/
     border-radius: 50%;
     justify-self: center;
     margin-bottom: var(--mb-1);
 }
 
-.home_title{
+.home_title {
     font-size: var(--h1-font-size);
 }
 
-.home_profession{
+.home_profession {
     font-size: var(--normal-font-size);
     margin-bottom: var(--mb-1);
 }
 
-.home_address{
+.home_address {
     gap: 1rem;
 }
 
-.home_information{
+.home_information {
     display: flex;
     align-items: center;
     font-size: var(--small-font-size);
 }
 
+.home_icon {
+    /*?yeni ekledim*/
+    font-size: 1.2rem;
+    margin-right: .25rem;
+}
+
 
 /*========== SOCIAL ==========*/
-.social_container{
+.social_container {
     grid-template-columns: max-content;
     gap: 1rem;
 }
 
-.social_link{
+.social_link {
     display: inline-flex;
     align-items: center;
     font-size: var(--small-font-size);
     color: var(--text-color);
 }
 
-.social_link:hover{
+.social_link:hover {
     color: var(--title-color);
 }
 
-.social_icon{
+.social_icon {
     font-size: 1.2rem;
     margin-right: .25rem;
 }
 
 /*========== PROFILE ==========*/
-.profile_description{
+.profile_description {
     text-align: center;
 }
 
 /*========== EDUCATION AND EXPERIENCE ==========*/
 .education_content,
-.experience_content{
+.experience_content {
     display: flex;
 }
 
 .education_time,
-.experience_time{
+.experience_time {
     padding-right: 1rem;
 }
 
 .education_rounder,
-.experience_rounder{
+.experience_rounder {
     position: relative;
     display: block;
     width: 16px;
@@ -384,7 +418,7 @@ img{
 }
 
 .education_line,
-.experience_line{
+.experience_line {
     display: block;
     width: 2px;
     height: 110%;
@@ -393,44 +427,48 @@ img{
 }
 
 .education_data,
-.experience_data{
+.experience_data {
     gap: .5rem;
 }
 
 .education_title,
-.experience_title{
+.experience_title {
     font-size: var(--h3-font-size);
 }
 
 .education_studies,
-.experience_company{
+.experience_company {
     font-size: var(--small-font-size);
     color: var(--title-color);
 }
 
-.education_year{
+.experience {
+    position: relative;
+}
+
+.education_year {
     font-size: var(--smaller-font-size);
 }
 
 /*========== SKILLS AND LANGUAGES ==========*/
 .skills_content,
-.languages_content{
+.languages_content {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.languages_content{
+.languages_content {
     gap: 0;
 }
 
 .skills_name,
-.languages_name{
+.languages_name {
     display: flex;
     align-items: center;
     margin-bottom: var(--mb-2);
 }
 
 .skills_circle,
-.languages_circle{
+.languages_circle {
     display: inline-block;
     width: 5px;
     height: 5px;
@@ -440,68 +478,115 @@ img{
 }
 
 /*========== CERTIFICATES ==========*/
-.certificate_title{
+.certificate_title {
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-1);
 }
 
-/*========== REFERENCES ==========*/
-.references_content{
-    gap: .25rem;
-}
-.references_subtitle{
-    color: var(--text-color-light);
-}
-
-.references_subtitle,
-.references_contact{
-    font-size: var(--smaller-font-size);
-}
-
-.references_title{
-    font-size: var(--h3-font-size);
-}
-
 /*========== INTERESTS ==========*/
-.interests_container{
+.interests_container {
     grid-template-columns: repeat(3, 1fr);
     margin-top: var(--mb-2);
 }
 
-.interests_content{
+.interests_content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.edit-interests_content{
+.edit-interests_content {
     margin-top: var(--mb-2);
 }
 
-.interests_icon{
+.interests_icon {
     font-size: 1.5rem;
     color: var(--text-color-light);
     margin-bottom: .25rem;
 }
 
-/* ekran genişliği 1368 pikselden küçük olduğunda çalışır */
-@media screen and (max-width: 1377px) {
-    .edit-form {
-        width: 100%; 
-        margin: 10px auto; 
+/*========== MEDIA QUERIES ==========*/
+/* Classes modified for large screen size */
+@media screen and (min-width: 968px) {
+    body {
+        margin: 3rem 0;
     }
-    
+
+    .bd-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .resume {
+        display: grid;
+        grid-template-columns: .5fr 1fr;
+        background-color: var(--container-color);
+        box-shadow: 0 0 8px rgba(13, 12, 12, .15);
+    }
+
+    .resume_left {
+        background-color: var(--container-color-alt);
+    }
+
+    .resume_left,
+    .resume_right {
+        padding: 0 2.5rem;
+    }
+
+    .generate-pdf {
+        display: inline-block;
+    }
+
+    .button-edit {
+        display: inline-block;
+    }
+
+    .button-save {
+        display: inline-block;
+    }
+
+    .button-cancel {
+        display: inline-block;
+    }
+
+    .section-title,
+    .profile_description {
+        text-align: initial;
+    }
+
+    .home_container {
+        gap: 1.5rem;
+    }
+
+    .languages_content {
+        grid-template-columns: repeat(2, max-content);
+        column-gap: 3.5rem;
+    }
+
+    .interests_container {
+        grid-template-columns: repeat(4, max-content);
+        column-gap: 3.5rem;
+    }
+}
+
+/* ekran genişliği 1286 pikselden küçük olduğunda çalışır */
+@media screen and (max-width: 1286px) {
+    .edit-form {
+        width: 100%;
+        margin: 10px auto;
+    }
+
     .main {
         display: none !important;
     }
 
-    .edit-bd-container{
+    .edit-bd-container {
         width: 170%;
         margin-left: 10rem;
         margin-right: 10rem;
     }
 
-    .edit-bd-container .resume_left input{
+    .edit-bd-container .resume_left input {
         width: 200px !important;
         font-size: 0.8rem;
         font-family: var(--body-font);
@@ -509,110 +594,51 @@ img{
     }
 
     .edit-bd-container .resume_right input,
-    .edit-bd-container .resume_right textarea{
-        width: 380px !important;
+    .edit-bd-container .resume_right textarea {
+        width: 480px !important;
         font-size: 0.8rem;
         font-family: var(--body-font);
         padding: 2px 2px 2px 4px;
     }
+}
 
-    /*========== save button ==========*/
-    .button-save{
-        position: relative;
-        left: 40rem;
-        bottom: 34.5rem;
-        font-size: 1.2rem;
-        color: var(--text-color);
-        cursor: pointer;
-    }
-
-    /*========== cancel button ==========*/
-    .button-cancel{
-        position: relative;
-        left: 40rem;
-        bottom: 34.3rem;
-        font-size: 1.6rem;
-        color: var(--text-color);
-        cursor: pointer;
+@media screen and (max-width: 1224px) {
+    .edit-bd-container .resume_right input,
+    .edit-bd-container .resume_right textarea {
+        width: 350px !important;
     }
 }
 
-/*========== MEDIA QUERIES ==========*/
-/* Classes modified for large screen size */
-@media screen and (min-width: 968px){
-    body{
-       margin: 3rem 0;
-    }
-
-    .bd-container{
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .resume{
-        display: grid;
-        grid-template-columns: .5fr 1fr;
-        background-color: var(--container-color);
-        box-shadow: 0 0 8px rgba(13,12,12,.15);
-    }
-
-    .resume_left{
-        background-color: var(--container-color-alt);
-    }
-
-    .resume_left,
-    .resume_right{
-        padding: 0 2.5rem;
-    }
-
-    .generate-pdf{
-        display: inline-block;
-    }
-
-    .button-edit{
-        display: inline-block;
-    }
-
-    .section-title,
-    .profile_description{
-        text-align: initial;
-    }
-
-    .home_container{
-        gap: 1.5rem;
-    }
-
-    .references_container{
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .languages_content{
-        grid-template-columns: repeat(2, max-content);
-        column-gap: 3.5rem;
-    }
-
-    .interests_container{
-        grid-template-columns: repeat(4, max-content);
-        column-gap: 3.5rem;
+@media screen and (max-width: 1087px) {
+    .edit-bd-container .resume_right input,
+    .edit-bd-container .resume_right textarea {
+        width: 300px !important;
     }
 }
-  
-/* --- edit form --- */
 
-.edit-form{
+/* ===== Edit Form ===== */
+.edit-form .home {
+    position: relative;
+}
+
+.edit-form .experience {
+    position: relative;
+}
+
+.edit-form {
     display: none;
     float: left;
     width: calc(var(--width) - 3%);
     margin: 10px;
 }
 
-.main{
+.main {
     float: left;
     width: var(--width);
     margin: 10px;
 }
 
-input{
+input {
     font-size: 0.8rem;
     font-family: var(--body-font);
     padding: 2px 2px 2px 4px;
