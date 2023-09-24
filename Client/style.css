@@ -58,10 +58,6 @@
     box-sizing: border-box;
 }
 
-/* html{
-    scroll-behavior: smooth;
-} */
-
 /*========== Font size variables to scale cv ==========*/
 body.scale-cv {
     --h1-font-size: .938rem;
@@ -628,13 +624,13 @@ img {
 .edit-form {
     display: none;
     float: left;
-    width: calc(var(--width) - 3%);
+    width: var(--width);
     margin: 10px;
 }
 
 .main {
     float: left;
-    width: var(--width);
+    width: calc(var(--width) - 3%);
     margin: 10px;
 }
 
