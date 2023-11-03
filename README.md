@@ -30,7 +30,7 @@ Bu proje, bir kullanıcının kişisel bir özgeçmişi (CV) oluşturmasına ve 
 
 Projenin bazı ekran görüntülerini aşağıda bulabilirsiniz:
 
-![CvProject]()
+![CvProject](cvProject.png)
 
 
 
